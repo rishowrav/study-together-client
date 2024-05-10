@@ -4,13 +4,13 @@ import Footer from "../components/ShareSection/Footer";
 
 const Main = () => {
   return (
-    <div>
+    <di className="space-y-10 ">
       <Navbar></Navbar>
-      <div className="h-[calc(100vh-116px-239px)]">
+      <div className="min-h-[calc(100vh-116px-239px)]">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
-    </div>
+    </di>
   );
 };
 

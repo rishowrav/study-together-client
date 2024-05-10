@@ -19,13 +19,13 @@ const Navbar = () => {
   const links = (
     <>
       <li className="text-sm font-normal text-base-400 ">
-        <NavLink to="/allArts">Assignments</NavLink>
+        <NavLink to="/assignments">Assignments</NavLink>
       </li>{" "}
       <li className="text-sm font-normal text-base-400 ">
-        <NavLink to="/addCraft">Create Assignment</NavLink>
+        <NavLink to="/create_assignment">Create Assignment</NavLink>
       </li>
       <li className="text-sm font-normal text-base-400 ">
-        <NavLink to="/myArts">Panding Assignment</NavLink>
+        <NavLink to="/pending_assignment">Pending Assignment</NavLink>
       </li>
     </>
   );
@@ -105,7 +105,7 @@ const Navbar = () => {
             Login
           </Link>
           <Link
-            to="/register"
+            to="/registration"
             className="btn rounded-full px-6  text-white bg-[#E35353] border-none hover:bg-[#E35353]"
           >
             Register

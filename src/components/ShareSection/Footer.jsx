@@ -16,8 +16,7 @@ const Footer = () => {
               className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
               aria-label="Reddit"
             >
-              {" "}
-              Home{" "}
+              Assignment
             </a>
 
             <a
@@ -25,8 +24,7 @@ const Footer = () => {
               className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
               aria-label="Reddit"
             >
-              {" "}
-              About{" "}
+              Create Assignment
             </a>
 
             <a
@@ -34,26 +32,7 @@ const Footer = () => {
               className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
               aria-label="Reddit"
             >
-              {" "}
-              Teams{" "}
-            </a>
-
-            <a
-              href="#"
-              className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
-              aria-label="Reddit"
-            >
-              {" "}
-              Privacy{" "}
-            </a>
-
-            <a
-              href="#"
-              className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
-              aria-label="Reddit"
-            >
-              {" "}
-              Cookies{" "}
+              Pending Assignment
             </a>
           </div>
         </div>
