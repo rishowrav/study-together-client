@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="h-[calc(100vh-68px-239px)]">
+      <div className="h-[calc(100vh-116px-239px)]">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
