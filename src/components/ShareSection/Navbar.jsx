@@ -4,9 +4,11 @@ import Avatar from "../../assets/images/avatar.png";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(true);
+  const { user, logOut } = useAuth();
 
   if (theme) {
     document
@@ -21,12 +23,16 @@ const Navbar = () => {
       <li className="text-sm font-normal text-base-400 ">
         <NavLink to="/assignments">Assignments</NavLink>
       </li>{" "}
-      <li className="text-sm font-normal text-base-400 ">
-        <NavLink to="/create_assignment">Create Assignment</NavLink>
-      </li>
-      <li className="text-sm font-normal text-base-400 ">
-        <NavLink to="/pending_assignment">Pending Assignment</NavLink>
-      </li>
+      {user && (
+        <>
+          <li className="text-sm font-normal text-base-400 ">
+            <NavLink to="/create_assignment">Create Assignment</NavLink>
+          </li>
+          <li className="text-sm font-normal text-base-400 ">
+            <NavLink to="/pending_assignment">Pending Assignment</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -68,49 +74,59 @@ const Navbar = () => {
       <div className="navbar-end space-x-3">
         {/* if user login or not login */}
 
-        <>
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar z-[999]"
-            >
-              <div className="w-10 rounded-full">
-                <img alt="Tailwind CSS Navbar component" src={Avatar} />
+        {user && (
+          <>
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar z-[999]"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user.photoURL || Avatar}
+                  />
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm space-y-1 dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a>My Attempted Assignment </a>
+                </li>
+
+                <li>
+                  <button
+                    onClick={logOut}
+                    className="btn btn-sm text-white bg-[#E35353] border-none hover:bg-[#E35353]"
+                  >
+                    LogOut
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm space-y-1 dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52"
+          </>
+        )}
+
+        {!user && (
+          <>
+            {" "}
+            <Link
+              to="/login"
+              className="btn rounded-full px-6 text-white bg-[#E35353] border-none hover:bg-[#E35353]"
             >
-              <li>
-                <a>Attempted Assignment </a>
-              </li>
-
-              <li>
-                <button className="btn btn-sm text-white bg-[#E35353] border-none hover:bg-[#E35353]">
-                  LogOut
-                </button>
-              </li>
-            </ul>
-          </div>
-        </>
-
-        <>
-          {" "}
-          <Link
-            to="/login"
-            className="btn rounded-full px-6 text-white bg-[#E35353] border-none hover:bg-[#E35353]"
-          >
-            Login
-          </Link>
-          <Link
-            to="/registration"
-            className="btn rounded-full px-6  text-white bg-[#E35353] border-none hover:bg-[#E35353]"
-          >
-            Register
-          </Link>
-        </>
+              Login
+            </Link>
+            <Link
+              to="/registration"
+              className="btn rounded-full px-6  text-white bg-[#E35353] border-none hover:bg-[#E35353]"
+            >
+              Register
+            </Link>
+          </>
+        )}
 
         {/* theme dark light */}
         <label className="cursor-pointer grid place-items-center">
