@@ -9,7 +9,7 @@ const CreateAssignment = () => {
 
       {/* start */}
       <div className="bg-base-200 lg:p-24 md:p-16 p-10">
-        <h2 className="text-5xl text-center font-extrabold mb-6">
+        <h2 className="text-5xl text-center font-bold mb-6">
           Create a New Assignment
         </h2>
         <form onSubmit={""}>

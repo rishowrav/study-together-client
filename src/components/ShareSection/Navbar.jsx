@@ -97,7 +97,9 @@ const Navbar = () => {
                 className="menu menu-sm space-y-1 dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>My Attempted Assignment </a>
+                  <Link to="my_submitted_assignment">
+                    My Submitted Assignment{" "}
+                  </Link>
                 </li>
 
                 <li>

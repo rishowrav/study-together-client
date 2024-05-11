@@ -8,6 +8,7 @@ import PendingAssignment from "../pages/PendingAssignment/PendingAssignment";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import PrivateRoutes from "./PrivateRoutes";
+import MySubmittedAssignment from "../pages/MySubmittedAssignment/MySubmittedAssignment";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,14 @@ const router = createBrowserRouter([
       {
         path: "/registration",
         element: <Registration></Registration>,
+      },
+      {
+        path: "/my_submitted_assignment",
+        element: (
+          <PrivateRoutes>
+            <MySubmittedAssignment></MySubmittedAssignment>
+          </PrivateRoutes>
+        ),
       },
     ],
   },
