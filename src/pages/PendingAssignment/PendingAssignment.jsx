@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import { VscFilePdf } from "react-icons/vsc";
 
 const PendingAssignment = () => {
   return (
@@ -6,6 +7,78 @@ const PendingAssignment = () => {
       <Helmet>
         <title>STUDY TOGETHER | Pending Assignmen</title>
       </Helmet>
+
+      {/* modal give mark */}
+      <dialog id="my_modal_2" className="At nulla temporibus modal">
+        <div className="At nulla temporibus modal-box">
+          <div className="text-center">
+            <div>
+              <a
+                className="flex justify-end"
+                href="https://www.clickdimensions.com/links/TestPDFfile.pdf"
+                target="_blank"
+              >
+                <div className="flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 ">
+                  <span
+                    className="px-4 py-3 font-bold flex gap-2"
+                    href="https://www.clickdimensions.com/links/TestPDFfile.pdf"
+                    target="_blank"
+                  >
+                    <VscFilePdf className="text-2xl" /> <span>PDF Link</span>
+                  </span>
+                </div>
+              </a>
+            </div>
+
+            <form>
+              <div className=" mb-4">
+                {/* marks */}
+                <div className="form-control ">
+                  <label className="label">
+                    <span className="label-text">Marks</span>
+                  </label>
+                  <label className="input-group">
+                    <input
+                      required
+                      type="text"
+                      name="marks"
+                      placeholder="Marks"
+                      className="input input-bordered w-full"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              {/* feedback */}
+              <div className="mb-4">
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Your Feedback</span>
+                  </label>
+                  <label className="input-group">
+                    <textarea
+                      required
+                      className="textarea textarea-bordered w-full"
+                      name="description"
+                      rows="2"
+                      placeholder="..."
+                    ></textarea>
+                  </label>
+                </div>
+              </div>
+
+              <input
+                type="submit"
+                value="Submit"
+                className="btn btn-block bg-[#e35353] text-white hover:bg-[#e35353]"
+              />
+            </form>
+          </div>
+        </div>
+        <form method="dialog" className="At nulla temporibus modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
 
       <section className="container px-4 mx-auto pt-12 space-y-6">
         <div className="flex items-center gap-x-3">
@@ -36,7 +109,14 @@ const PendingAssignment = () => {
                 <td>Quality Control Specialist</td>
                 <td>77</td>
                 <td>
-                  <button className="btn btn-sm">Give Mark</button>
+                  <button
+                    onClick={() =>
+                      document.getElementById("my_modal_2").showModal()
+                    }
+                    className="btn btn-sm btn-success text-white"
+                  >
+                    Give Mark
+                  </button>
                 </td>
               </tr>
               {/* row 2 */}
@@ -46,7 +126,9 @@ const PendingAssignment = () => {
                 <td>Desktop Support Technician</td>
                 <td>33</td>
                 <td>
-                  <button className="btn btn-sm">Give Mark</button>
+                  <button className="btn btn-sm btn-success text-white">
+                    Give Mark
+                  </button>
                 </td>
               </tr>
               {/* row 3 */}
@@ -56,7 +138,9 @@ const PendingAssignment = () => {
                 <td>Tax Accountant</td>
                 <td>44</td>
                 <td>
-                  <button className="btn btn-sm">Give Mark</button>
+                  <button className="btn btn-sm btn-success text-white">
+                    Give Mark
+                  </button>
                 </td>
               </tr>
             </tbody>
