@@ -13,12 +13,12 @@ const Slider = () => {
   return (
     <div>
       <Swiper
-        spaceBetween={0}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 42500,
           disableOnInteraction: false,
         }}
+        speed={1000}
         loop={true}
         pagination={{
           clickable: true,
@@ -46,7 +46,7 @@ const Slider = () => {
                 affordable for home
               </p>
               <div className="space-x-4">
-                <button className="btn btn-lg border-[3px] font-bold hover:bg-white hover:border-white hover:text-[#FF6F61]  border-white bg-transparent text-white">
+                <button className="btn btn-lg border-[3px] font-bold bg-white hover:border-white text-[#FF6F61]  border-white hover:bg-transparent hover:text-white">
                   Study Together Now
                 </button>
               </div>
@@ -66,7 +66,7 @@ const Slider = () => {
                 shapes at its center
               </p>
               <div className="space-x-4">
-                <button className="btn btn-lg border-[3px] font-bold hover:bg-white hover:border-white hover:text-[#FF6F61]  border-white bg-transparent text-white">
+                <button className="btn btn-lg border-[3px] font-bold bg-white hover:border-white text-[#FF6F61]  border-white hover:bg-transparent hover:text-white">
                   Study Together Now
                 </button>
               </div>
@@ -86,6 +86,26 @@ const Slider = () => {
               </p>
               <div className="space-x-4">
                 <button className="btn btn-lg border-[3px] font-bold hover:bg-white hover:border-white hover:text-[#FF6F61]  border-white bg-transparent text-white">
+                  Study Together Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="slider slider1 flex justify-center items-center z-0 bg-[linear-gradient(45deg,#FF6F6159,#9656A1B3),url('/img/slider4.jpg')] h-[700px] bg-cover bg-center ">
+            <div className="text-center text-white space-y-8">
+              <h2 className="md:text-5xl text-4xl font-bold text-white capitalize mx-auto w-4/5">
+                Porcelain Patterned Wall & Floor Tile
+              </h2>
+              <p className="lg:w-2/3 mx-auto w-4/5">
+                The field tile offers a modern twist to classic old-world
+                European elegance. In muted black and chalky white tones, this
+                unique patterned tile features a star constructed of geometric
+                shapes at its center
+              </p>
+              <div className="space-x-4">
+                <button className="btn btn-lg border-[3px] font-bold bg-white hover:border-white text-[#FF6F61]  border-white hover:bg-transparent hover:text-white">
                   Study Together Now
                 </button>
               </div>

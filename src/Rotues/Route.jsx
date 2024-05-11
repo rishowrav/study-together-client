@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import Main from "../Layout/Main";
-import Home from "../pages/Home/Home";
+import Home from "../pages/Home/Home/Home";
 import Assignments from "../pages/Assignments/Assignments";
 import CreateAssignment from "../pages/CreateAssignment/CreateAssignment";
 import PendingAssignment from "../pages/PendingAssignment/PendingAssignment";
