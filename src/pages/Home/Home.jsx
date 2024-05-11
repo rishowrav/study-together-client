@@ -1,7 +1,13 @@
+import { Helmet } from "react-helmet";
+import Slider from "../../components/Slider/Slider";
+
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="">
+      <Helmet>
+        <title>STUDY TOGETHER | Home</title>
+      </Helmet>
+      <Slider></Slider>
     </div>
   );
 };

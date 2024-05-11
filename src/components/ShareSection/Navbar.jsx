@@ -21,6 +21,9 @@ const Navbar = () => {
   const links = (
     <>
       <li className="text-sm font-normal text-base-400 ">
+        <NavLink to="/">Home</NavLink>
+      </li>{" "}
+      <li className="text-sm font-normal text-base-400 ">
         <NavLink to="/assignments">Assignments</NavLink>
       </li>{" "}
       {user && (
@@ -38,7 +41,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="navbar bg-base-100 py-8"
+      className="navbar bg-base-100 py-6 "
       data-aos-duration="1000"
       data-aos="fade-right"
     >
@@ -115,13 +118,13 @@ const Navbar = () => {
             {" "}
             <Link
               to="/login"
-              className="btn rounded-full px-6 text-white bg-[#E35353] border-none hover:bg-[#E35353]"
+              className="btn rounded-full px-6 text-white bg-[#E35353] border-none hover:bg-[#ff6f61]"
             >
               Login
             </Link>
             <Link
               to="/registration"
-              className="btn rounded-full px-6  text-white bg-[#E35353] border-none hover:bg-[#E35353]"
+              className="btn rounded-full px-6  text-white bg-[#E35353] border-none hover:bg-[#ff6f61]"
             >
               Register
             </Link>

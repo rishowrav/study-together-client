@@ -7,9 +7,12 @@ const Main = () => {
   return (
     <div>
       <Toaster />
-      <div className="space-y-10 ">
-        <Navbar></Navbar>
-        <div className="min-h-[calc(100vh-116px-239px)]">
+      <div>
+        <div className="container mx-auto">
+          <Navbar></Navbar>
+        </div>
+
+        <div className="min-h-[calc(100vh-116px-239px)]   ">
           <Outlet></Outlet>
         </div>
         <Footer></Footer>
