@@ -7,6 +7,7 @@ import CreateAssignment from "../pages/CreateAssignment/CreateAssignment";
 import PendingAssignment from "../pages/PendingAssignment/PendingAssignment";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -23,11 +24,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/create_assignment",
-        element: <CreateAssignment></CreateAssignment>,
+        element: (
+          <PrivateRoutes>
+            <CreateAssignment></CreateAssignment>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/pending_assignment",
-        element: <PendingAssignment></PendingAssignment>,
+        element: (
+          <PrivateRoutes>
+            <PendingAssignment></PendingAssignment>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",

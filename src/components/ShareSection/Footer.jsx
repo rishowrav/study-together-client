@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 
 const Footer = () => {
@@ -11,29 +12,32 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-wrap justify-center mt-6 -mx-4">
-            <a
+            <Link
+              to="assignments"
               href="#"
               className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
               aria-label="Reddit"
             >
               Assignment
-            </a>
+            </Link>
 
-            <a
+            <Link
+              to="create_assignment"
               href="#"
               className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
               aria-label="Reddit"
             >
               Create Assignment
-            </a>
+            </Link>
 
-            <a
+            <Link
+              to="pending_assignment"
               href="#"
               className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
               aria-label="Reddit"
             >
               Pending Assignment
-            </a>
+            </Link>
           </div>
         </div>
 
