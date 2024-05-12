@@ -1,19 +1,75 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ViewAssignment = () => {
   const loaderData = useLoaderData();
+  const { marks, assignmentTitle } = loaderData;
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleModal = (e) => {
+    e.preventDefault();
+    //
+    const form = e.target;
+
+    const pdfLink = form.pdf_link.value;
+    const note = form.note.value;
+
+    const dataInfo = {
+      assignmentTitle,
+      pdfLink,
+      note,
+      marks,
+      obtainMark: "none",
+      status: "Pending",
+      feedback: "none",
+      examineeInfo: {
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      },
+    };
+
+    axios
+      .post("http://localhost:3000/answer", dataInfo)
+      .then((res) => {
+        console.log(res.data);
+        toast.success("Successfully Submitted");
+        navigate(`/my_submitted_assignment`);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error("something is wrong");
+      });
+  };
 
   return (
     <section>
       {/* modal give mark */}
+
       <dialog id="my_modal_2" className="At nulla temporibus modal">
         <div className="At nulla temporibus modal-box">
           <div className="text-center">
             <div className="my-2">
-              <h5 className="font-bold text-2xl">Name of Who submit it</h5>
+              <div className="">
+                <div className="avatar">
+                  <div className="mask mask-squircle w-12 h-12">
+                    <img
+                      src={user.photoURL}
+                      alt="Avatar Tailwind CSS Component"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="font-bold">{user.displayName}</div>
+                  <div className="text-sm opacity-50">Examinee</div>
+                </div>
+              </div>
             </div>
 
-            <form>
+            <form onSubmit={handleModal}>
               <div className=" mb-4">
                 {/* marks */}
                 <div className="form-control ">
@@ -42,7 +98,7 @@ const ViewAssignment = () => {
                     <textarea
                       required
                       className="textarea textarea-bordered w-full"
-                      name="description"
+                      name="note"
                       rows="2"
                       placeholder="..."
                     ></textarea>
@@ -62,6 +118,7 @@ const ViewAssignment = () => {
           <button>close</button>
         </form>
       </dialog>
+
       <div className="At flex flex-col lg:flex-row   card lg:At  card-side bg-base-100 shadow-xl container lg:w-[1200px] mx-auto">
         <figure className="lg:w-5/12  rounded-tr-2xl rounded-bl-none lg:rounded-tr-none">
           <img
@@ -111,12 +168,16 @@ const ViewAssignment = () => {
           </h3>
 
           <div className="At  card-actions justify-end">
-            <button
-              onClick={() => document.getElementById("my_modal_2").showModal()}
-              className="At  btn At  btn-error"
-            >
-              Take Assignment
-            </button>
+            {loaderData.author.email === user.email || (
+              <button
+                onClick={() =>
+                  document.getElementById("my_modal_2").showModal()
+                }
+                className="At  btn At  btn-error"
+              >
+                Take Assignment
+              </button>
+            )}
           </div>
         </div>
       </div>

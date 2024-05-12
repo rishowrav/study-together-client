@@ -1,6 +1,11 @@
 import { Helmet } from "react-helmet";
+import { useLoaderData } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const MySubmittedAssignment = () => {
+  const { user } = useAuth();
+  const loaderData = useLoaderData();
+
   return (
     <section>
       <Helmet>
@@ -32,16 +37,22 @@ const MySubmittedAssignment = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>This is my first assignment</td>
-                <td>
-                  <button className="btn btn-sm btn-warning">Pending</button>
-                </td>
-                <td>0</td>
-                <td>0</td>
-                <td>Lorem ipsum dolor sit amet consectetur adipisicing...</td>
-              </tr>
+              {loaderData
+                .filter((data) => data.examineeInfo.email === user.email)
+                .map((data, index) => (
+                  <tr key={data._id}>
+                    <th>{index + 1}</th>
+                    <td>{data.assignmentTitle}</td>
+                    <td>
+                      <button className="btn btn-sm btn-warning">
+                        {data.status}
+                      </button>
+                    </td>
+                    <td>{data.marks}</td>
+                    <td>{data.obtainMark}</td>
+                    <td>{data.feedback}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
