@@ -59,12 +59,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/view_assignment",
+        path: "/view_assignment/:id",
         element: (
           <PrivateRoutes>
             <ViewAssignment></ViewAssignment>
           </PrivateRoutes>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/assignments/${params.id}`),
       },
       {
         path: "/updateAssignment/:id",

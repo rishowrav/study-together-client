@@ -1,4 +1,8 @@
+import { useLoaderData } from "react-router-dom";
+
 const ViewAssignment = () => {
+  const loaderData = useLoaderData();
+
   return (
     <section>
       {/* modal give mark */}
@@ -59,9 +63,10 @@ const ViewAssignment = () => {
         </form>
       </dialog>
       <div className="At flex flex-col lg:flex-row   card lg:At  card-side bg-base-100 shadow-xl container lg:w-[1200px] mx-auto">
-        <figure className="lg:w-5/12 rounded-tr-2xl rounded-bl-none lg:rounded-tr-none">
+        <figure className="lg:w-5/12  rounded-tr-2xl rounded-bl-none lg:rounded-tr-none">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
+            className="object-cover"
+            src={loaderData.thumbnailURL}
             alt="Album"
           />
         </figure>
@@ -72,44 +77,37 @@ const ViewAssignment = () => {
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
                 <img
-                  src="https://img.daisyui.com/tailwind-css-component-profile-3@56w.png"
+                  src={loaderData.author.photo}
                   alt="Avatar Tailwind CSS Component"
                 />
               </div>
             </div>
             <div>
-              <div className="font-bold"> Brice Swyre</div>
+              <div className="font-bold"> {loaderData.author.name}</div>
               <div className="text-sm opacity-50">Author</div>
             </div>
           </div>
           {/* date */}
           <p>
-            <span className="font-bold">Date:</span> <span>12/02/2024</span>
+            <span className="font-bold">Date:</span>{" "}
+            <span>{new Date(loaderData.date).toLocaleDateString()}</span>
           </p>
 
           <div className="flex justify-between items-center">
             <h2 className="At card-title text-4xl font-bold">
-              New album is released!
+              {loaderData.assignmentTitle}
             </h2>
-            <button className="btn font-bold text-2xl">Hard</button>
+            <button className="btn font-bold text-2xl">
+              {loaderData.difficultyLevel}
+            </button>
           </div>
           <p>
-            <span className="font-bold">Description: </span>Lorem ipsum dolor
-            sit amet consectetur, adipisicing elit. Deserunt vero quas aperiam
-            numquam dolor facere, accusamus atque iusto praesentium iure eaque
-            itaque ex quaerat. Unde quam saepe alias eum quasi consequuntur
-            maiores voluptatum tempore hic sint magnam impedit aperiam debitis
-            incidunt reiciendis optio, excepturi et nam quia porro aliquam ipsam
-            enim explicabo qui! Repellendus fuga dignissimos quis eveniet
-            commodi ratione vitae recusandae harum, delectus natus libero? Nisi
-            facilis eligendi harum inventore? Maxime asperiores labore
-            perferendis error. Cupiditate, nemo nam. Incidunt animi quasi,
-            cumque voluptatum soluta esse molestiae maiores culpa unde nostrum,
-            suscipit vel et, corrupti similique ea possimus cupiditate vero.
+            <span className="font-bold">Description: </span>
+            {loaderData.description}
           </p>
           <h3>
             <span className="font-bold">Marks: </span>
-            <span className="text-5xl font-bold">98</span>
+            <span className="text-5xl font-bold">{loaderData.marks}</span>
           </h3>
 
           <div className="At  card-actions justify-end">

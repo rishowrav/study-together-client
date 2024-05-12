@@ -90,7 +90,7 @@ const Card = ({ assignment, setAssignments, assignments }) => {
 
           <div className="flex justify-between items-center font-[500]">
             <div className="flex items-center gap-1">
-              <Link to="/view_assignment">
+              <Link to={`/view_assignment/${assignment._id}`}>
                 <button className="btn btn-md text-[#E35353] hover:text-white duration-300 hover:border-[#E35353] border-1  rounded-sm border-[#E35353] bg-transparent  hover:bg-[#E35353]  ">
                   View Assignment
                 </button>
