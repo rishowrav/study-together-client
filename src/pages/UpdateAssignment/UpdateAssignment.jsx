@@ -5,16 +5,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-const CreateAssignment = () => {
+const UpdateAssignment = () => {
+  const loaderData = useLoaderData();
   const { user } = useAuth();
-  const [startDate, setStartDate] = useState(new Date());
-
+  const [startDate, setStartDate] = useState(new Date(loaderData.date));
   const navigate = useNavigate();
 
   // handle create assignment
-  const handleCreateAssignment = (e) => {
+  const handleUpdateAssignment = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -42,11 +42,17 @@ const CreateAssignment = () => {
 
     // data sending to server
     axios
-      .post("http://localhost:3000/assignment", assignmentInfo)
+      .patch(
+        `http://localhost:3000/assignment/${loaderData._id}`,
+        assignmentInfo
+      )
       .then((response) => {
-        if (response.data.insertedId) {
-          toast.success("Successfully Assignment Created");
+        console.log(response.data);
+        if (response.data.modifiedCount) {
+          toast.success("Successfully Updated");
           navigate("/assignments");
+        } else {
+          toast.error("nothing change");
         }
       })
       .catch((error) => {
@@ -58,15 +64,15 @@ const CreateAssignment = () => {
   return (
     <div className="container  mx-auto">
       <Helmet>
-        <title>STUDY TOGETHER | Create Assignment</title>
+        <title>STUDY TOGETHER | Update Assignment</title>
       </Helmet>
 
       {/* start */}
       <div className="bg-base-200 lg:p-24 md:p-16 p-10">
         <h2 className="text-5xl text-center font-bold mb-6">
-          Create a New Assignment
+          Update Assignment
         </h2>
-        <form onSubmit={handleCreateAssignment}>
+        <form onSubmit={handleUpdateAssignment}>
           {/* Assignment title row */}
           <div className=" mb-4">
             <div className="form-control ">
@@ -80,6 +86,7 @@ const CreateAssignment = () => {
                   name="assignment_title"
                   placeholder="Assignment Title"
                   className="input input-bordered w-full"
+                  defaultValue={loaderData.assignmentTitle}
                 />
               </label>
             </div>
@@ -98,6 +105,7 @@ const CreateAssignment = () => {
                   name="description"
                   rows="2"
                   placeholder="Description"
+                  defaultValue={loaderData.description}
                 ></textarea>
               </label>
             </div>
@@ -116,6 +124,7 @@ const CreateAssignment = () => {
                   name="thumbnail_url"
                   placeholder="Thumbnail URL"
                   className="input input-bordered w-full"
+                  defaultValue={loaderData.thumbnailURL}
                 />
               </label>
             </div>
@@ -135,6 +144,7 @@ const CreateAssignment = () => {
                   name="marks"
                   placeholder="Marks"
                   className="input input-bordered w-full"
+                  defaultValue={loaderData.marks}
                 />
               </label>
             </div>
@@ -163,6 +173,7 @@ const CreateAssignment = () => {
                   required
                   className="select select-bordered w-full "
                   name="difficultyLevel"
+                  defaultValue={loaderData.difficultyLevel}
                 >
                   <option disabled selected>
                     Select Difficulty Level
@@ -211,7 +222,7 @@ const CreateAssignment = () => {
 
           <input
             type="submit"
-            value="Publish Assignment"
+            value="Update Assignment"
             className="btn btn-block bg-[#e35353] text-white hover:bg-[#e35353]"
           />
         </form>
@@ -220,4 +231,4 @@ const CreateAssignment = () => {
   );
 };
 
-export default CreateAssignment;
+export default UpdateAssignment;

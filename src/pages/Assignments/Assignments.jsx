@@ -15,7 +15,7 @@ const Assignments = () => {
       </Helmet>
       ;
       <h2 className="text-5xl font-bold text-center mb-10 mt-6">
-        Number of Assignments - 01
+        Number of Assignments - 0{assignments.length}
       </h2>
       {/* filter button */}
       <div className="flex justify-end">
