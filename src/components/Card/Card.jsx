@@ -1,9 +1,59 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import axios from "axios";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
-const Card = ({ assignment }) => {
+const Card = ({ assignment, setAssignments, assignments }) => {
+  const { user } = useAuth();
+
   // delete method
-  const handleDelete = () => {};
+  const handleDelete = (id) => {
+    if (user.email !== assignment?.author?.email) {
+      return Swal.fire({
+        icon: "warning",
+        title: "You are not the author of this assignment.",
+      });
+    }
+
+    // sweet alert
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // axios delete
+        axios
+          .delete(`http://localhost:3000/assignment/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount) {
+              toast.success("Successfully Delete Assignment");
+              const reamining = assignments.filter(
+                (assignment) => assignment._id !== id
+              );
+              setAssignments(reamining);
+            }
+          })
+          .catch((error) => {
+            console.log(error.message);
+            toast.error("something is wrong");
+          });
+
+        // sweet alert
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
+  };
 
   return (
     <div className="card realNest-card rounded-none bg-base-200 hover:shadow-xl duration-300 cursor-pointer">
@@ -52,7 +102,7 @@ const Card = ({ assignment }) => {
             </Link>
 
             <button
-              onClick={() => handleDelete()}
+              onClick={() => handleDelete(assignment._id)}
               className="btn btn-md text-white   bg-[#E35353]   rounded-sm  hover:bg-[#E35353] border-none  "
             >
               Delete
@@ -68,4 +118,10 @@ export default Card;
 
 Card.propTypes = {
   assignment: PropTypes.object,
+};
+Card.propTypes = {
+  setAssignments: PropTypes.func,
+};
+Card.propTypes = {
+  assignments: PropTypes.array,
 };

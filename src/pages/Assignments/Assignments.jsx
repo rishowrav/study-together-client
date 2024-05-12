@@ -2,9 +2,11 @@ import { Helmet } from "react-helmet";
 import { IoIosArrowDown } from "react-icons/io";
 import Card from "../../components/Card/Card";
 import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
 
 const Assignments = () => {
-  const assignments = useLoaderData();
+  const loaderData = useLoaderData();
+  const [assignments, setAssignments] = useState(loaderData);
 
   return (
     <div className="container lg:w-[1200px] mx-auto">
@@ -36,7 +38,12 @@ const Assignments = () => {
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
         {assignments.map((assignment) => (
-          <Card key={assignment._id} assignment={assignment}></Card>
+          <Card
+            key={assignment._id}
+            assignment={assignment}
+            setAssignments={setAssignments}
+            assignments={assignments}
+          ></Card>
         ))}
       </div>
     </div>
