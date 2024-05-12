@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Card = () => {
+const Card = ({ assignment }) => {
   // delete method
   const handleDelete = () => {};
 
@@ -10,7 +10,7 @@ const Card = () => {
       <figure className=" ">
         <div className="  w-full md:h-[280px] flex justify-center items-center  ">
           <img
-            src={"/img/slider3.jpg"}
+            src={assignment?.thumbnailURL}
             alt="Shoes"
             className="w-full h-full object-cover"
           />
@@ -22,16 +22,17 @@ const Card = () => {
             className="border-2 border-gray-300 px-3 py-2 rounded 
            text-sm"
           >
-            <span className="font-bold text-xl ">Hard</span>
+            <span className="font-bold text-xl ">
+              {assignment?.difficultyLevel}
+            </span>
           </span>
           <span className="  ">
-            Marks: <span className="font-bold text-3xl">98</span>
+            Marks:{" "}
+            <span className="font-bold text-3xl">{assignment?.marks}</span>
           </span>
         </div>
 
-        <h2 className=" text-xl font-bold  ">
-          Lorem ipsum dolor, sit amet consectetur adipisicing.
-        </h2>
+        <h2 className=" text-xl font-bold  ">{assignment?.assignmentTitle}</h2>
 
         <hr className="border border-dashed my-2 mt-2" />
 
@@ -64,13 +65,7 @@ const Card = () => {
 };
 
 export default Card;
-Card.propTypes = {
-  craft: PropTypes.array,
-};
 
 Card.propTypes = {
-  setUserCrafts: PropTypes.func,
-};
-Card.propTypes = {
-  userCrafts: PropTypes.array,
+  assignment: PropTypes.object,
 };

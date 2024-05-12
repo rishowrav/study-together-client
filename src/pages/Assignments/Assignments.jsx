@@ -1,9 +1,10 @@
 import { Helmet } from "react-helmet";
 import { IoIosArrowDown } from "react-icons/io";
 import Card from "../../components/Card/Card";
+import { useLoaderData } from "react-router-dom";
 
 const Assignments = () => {
-  // condision on customization
+  const assignments = useLoaderData();
 
   return (
     <div className="container lg:w-[1200px] mx-auto">
@@ -34,17 +35,9 @@ const Assignments = () => {
         </details>
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        {assignments.map((assignment) => (
+          <Card key={assignment._id} assignment={assignment}></Card>
+        ))}
       </div>
     </div>
   );
