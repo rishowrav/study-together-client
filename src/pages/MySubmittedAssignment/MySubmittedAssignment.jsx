@@ -28,7 +28,6 @@ const MySubmittedAssignment = () => {
                 <th>Marks</th>
                 <th>Obtain Marks</th>
                 <th>Feedback</th>
-                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -39,48 +38,9 @@ const MySubmittedAssignment = () => {
                 <td>
                   <button className="btn btn-sm btn-warning">Pending</button>
                 </td>
-                <td>77</td>
-                <td>77</td>
+                <td>0</td>
+                <td>0</td>
                 <td>Lorem ipsum dolor sit amet consectetur adipisicing...</td>
-                <td>
-                  <button className="btn btn-sm btn-error text-white">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-              {/* row 2 */}
-              <tr>
-                <th>2</th>
-                <td>This is my first assignment</td>
-                <td>
-                  {" "}
-                  <button className="btn btn-sm btn-warning">Pending</button>
-                </td>
-                <td>33</td>
-                <td>33</td>
-                <td>Lorem ipsum dolor sit amet consectetur adipisicing...</td>
-                <td>
-                  <button className="btn btn-sm btn-error text-white">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-              {/* row 3 */}
-              <tr>
-                <th>3</th>
-                <td>This is my first assignment</td>
-                <td>
-                  {" "}
-                  <button className="btn btn-sm btn-warning">Pending</button>
-                </td>
-                <td>44</td>
-                <td>55</td>
-                <td>Lorem ipsum dolor sit amet consectetur adipisicing...</td>
-                <td>
-                  <button className="btn btn-sm btn-error text-white">
-                    Delete
-                  </button>
-                </td>
               </tr>
             </tbody>
           </table>

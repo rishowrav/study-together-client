@@ -66,9 +66,27 @@ const ViewAssignment = () => {
           />
         </figure>
         <div className="At  card-body lg:w-7/12">
+          {/* author info */}
+
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img
+                  src="https://img.daisyui.com/tailwind-css-component-profile-3@56w.png"
+                  alt="Avatar Tailwind CSS Component"
+                />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold"> Brice Swyre</div>
+              <div className="text-sm opacity-50">Author</div>
+            </div>
+          </div>
+          {/* date */}
           <p>
             <span className="font-bold">Date:</span> <span>12/02/2024</span>
           </p>
+
           <div className="flex justify-between items-center">
             <h2 className="At card-title text-4xl font-bold">
               New album is released!

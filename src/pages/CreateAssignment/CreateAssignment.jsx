@@ -1,6 +1,56 @@
 import { Helmet } from "react-helmet";
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const CreateAssignment = () => {
+  const { user } = useAuth();
+  const [startDate, setStartDate] = useState(new Date());
+
+  // handle create assignment
+  const handleCreateAssignment = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const assignmentTitle = form.assignment_title.value;
+    const description = form.description.value;
+    const thumbnailURL = form.thumbnail_url.value;
+    const marks = form.marks.value;
+    const difficultyLevel = form.difficultyLevel.value;
+    const date = startDate;
+
+    const assignmentInfo = {
+      assignmentTitle,
+      description,
+      thumbnailURL,
+      marks,
+      difficultyLevel,
+      date,
+      author: {
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      },
+    };
+
+    // data sending to server
+    axios
+      .post("http://localhost:3000/assignment", assignmentInfo)
+      .then((response) => {
+        if (response.data.insertedId) {
+          toast.success("Successfully Assignment Created");
+        }
+      })
+      .catch((error) => {
+        console.log(error?.message);
+        toast.error("something wrong....!");
+      });
+  };
+
   return (
     <div className="container  mx-auto">
       <Helmet>
@@ -12,7 +62,7 @@ const CreateAssignment = () => {
         <h2 className="text-5xl text-center font-bold mb-6">
           Create a New Assignment
         </h2>
-        <form onSubmit={""}>
+        <form onSubmit={handleCreateAssignment}>
           {/* Assignment title row */}
           <div className=" mb-4">
             <div className="form-control ">
@@ -90,13 +140,11 @@ const CreateAssignment = () => {
               <label className="label">
                 <span className="label-text">Date</span>
               </label>
-              <label className="input-group">
-                <input
-                  required
-                  type="text"
-                  name="date"
-                  placeholder="Date"
+              <label className="input-group w-full">
+                <DatePicker
                   className="input input-bordered w-full"
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
                 />
               </label>
             </div>
@@ -110,7 +158,7 @@ const CreateAssignment = () => {
                 <select
                   required
                   className="select select-bordered w-full "
-                  name="stockStatus"
+                  name="difficultyLevel"
                 >
                   <option disabled selected>
                     Select Difficulty Level
@@ -132,7 +180,7 @@ const CreateAssignment = () => {
               <label className="input-group">
                 <input
                   disabled
-                  defaultValue=""
+                  defaultValue={user?.email}
                   type="text"
                   name="userEmail"
                   placeholder="User Email"
@@ -147,7 +195,7 @@ const CreateAssignment = () => {
               <label className="input-group">
                 <input
                   disabled
-                  defaultValue=""
+                  defaultValue={user?.displayName}
                   type="text"
                   name="userName"
                   placeholder="User Name"

@@ -108,7 +108,7 @@ const PendingAssignment = () => {
                 <th>1</th>
                 <td>Cy Ganderton</td>
                 <td>Quality Control Specialist</td>
-                <td>77</td>
+                <td>0</td>
                 <td>
                   <button
                     onClick={() =>
@@ -116,30 +116,6 @@ const PendingAssignment = () => {
                     }
                     className="btn btn-sm btn-success text-white"
                   >
-                    Give Mark
-                  </button>
-                </td>
-              </tr>
-              {/* row 2 */}
-              <tr>
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>33</td>
-                <td>
-                  <button className="btn btn-sm btn-success text-white">
-                    Give Mark
-                  </button>
-                </td>
-              </tr>
-              {/* row 3 */}
-              <tr>
-                <th>3</th>
-                <td>Brice Swyre</td>
-                <td>Tax Accountant</td>
-                <td>44</td>
-                <td>
-                  <button className="btn btn-sm btn-success text-white">
                     Give Mark
                   </button>
                 </td>
