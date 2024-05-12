@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import PrivateRoutes from "./PrivateRoutes";
 import MySubmittedAssignment from "../pages/MySubmittedAssignment/MySubmittedAssignment";
+import ViewAssignment from "../components/ViewAssignment/ViewAssignment";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <MySubmittedAssignment></MySubmittedAssignment>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/view_assignment",
+        element: (
+          <PrivateRoutes>
+            <ViewAssignment></ViewAssignment>
           </PrivateRoutes>
         ),
       },

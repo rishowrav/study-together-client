@@ -12,9 +12,10 @@ const PendingAssignment = () => {
       <dialog id="my_modal_2" className="At nulla temporibus modal">
         <div className="At nulla temporibus modal-box">
           <div className="text-center">
-            <div>
+            <div className="flex justify-between items-center">
+              <h5 className="font-bold text-2xl">Name of Eximinar</h5>
               <a
-                className="flex justify-end"
+                className=""
                 href="https://www.clickdimensions.com/links/TestPDFfile.pdf"
                 target="_blank"
               >
