@@ -44,7 +44,13 @@ const MySubmittedAssignment = () => {
                     <th>{index + 1}</th>
                     <td>{data.assignmentTitle}</td>
                     <td>
-                      <button className="btn btn-sm btn-warning">
+                      <button
+                        className={`btn btn-sm  ${
+                          data.status === "Pending"
+                            ? "btn-warning"
+                            : "btn-success text-white"
+                        }`}
+                      >
                         {data.status}
                       </button>
                     </td>

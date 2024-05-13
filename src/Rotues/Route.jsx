@@ -41,6 +41,7 @@ const router = createBrowserRouter([
             <PendingAssignment></PendingAssignment>
           </PrivateRoutes>
         ),
+        loader: () => fetch("http://localhost:3000/answers"),
       },
       {
         path: "/login",
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
           fetch(`http://localhost:3000/assignments/${params.id}`),
       },
       {
-        path: "/updateAssignment",
+        path: "/updateAssignment/:id",
         element: (
           <PrivateRoutes>
             <UpdateAssignment></UpdateAssignment>

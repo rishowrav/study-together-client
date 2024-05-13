@@ -168,16 +168,13 @@ const ViewAssignment = () => {
           </h3>
 
           <div className="At  card-actions justify-end">
-            {loaderData.author.email === user.email || (
-              <button
-                onClick={() =>
-                  document.getElementById("my_modal_2").showModal()
-                }
-                className="At  btn At  btn-error"
-              >
-                Take Assignment
-              </button>
-            )}
+            <button
+              disabled={loaderData.author.email === user.email}
+              onClick={() => document.getElementById("my_modal_2").showModal()}
+              className="At  btn At  btn-error disabled:cursor-not-allowed"
+            >
+              Take Assignment
+            </button>
           </div>
         </div>
       </div>

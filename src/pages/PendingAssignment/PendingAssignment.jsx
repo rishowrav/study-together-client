@@ -1,7 +1,49 @@
 import { Helmet } from "react-helmet";
 import { VscFilePdf } from "react-icons/vsc";
+import { useLoaderData } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const PendingAssignment = () => {
+  const [modalData, setModalData] = useState({});
+  const { user } = useAuth();
+  const loaderData = useLoaderData();
+
+  const handleGiveMark = (id) => {
+    const data = loaderData.find((data) => data._id === id);
+    setModalData(data);
+
+    // handle submit
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const obtainMark = form.obtainMarks.value;
+    const feedback = form.feedback.value;
+
+    const dataInfo = {
+      obtainMark,
+      feedback,
+      status: "Complete",
+    };
+
+    axios
+      .patch(`http://localhost:3000/feedback/${modalData._id}`, dataInfo)
+      .then((res) => {
+        console.log(res.data);
+        toast.success("Successfully Submitted");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error("something is wrong");
+      });
+  };
+
   return (
     <div>
       <Helmet>
@@ -13,25 +55,32 @@ const PendingAssignment = () => {
         <div className="At nulla temporibus modal-box">
           <div className="text-center">
             <div className="flex justify-between items-center">
-              <h5 className="font-bold text-2xl">Name of Eximinar</h5>
-              <a
-                className=""
-                href="https://www.clickdimensions.com/links/TestPDFfile.pdf"
-                target="_blank"
-              >
+              <div className="flex items-center gap-3">
+                <div className="avatar">
+                  <div className="mask mask-squircle w-12 h-12">
+                    <img
+                      src={user.photoURL}
+                      alt="Avatar Tailwind CSS Component"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="font-bold">{user.displayName}</div>
+                  <div className="text-sm opacity-50 flex justify-start">
+                    Examiner
+                  </div>
+                </div>
+              </div>
+              <a className="" href={modalData?.pdfLink} target="_blank">
                 <div className="flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 ">
-                  <span
-                    className="px-4 py-3 font-bold flex gap-2"
-                    href="https://www.clickdimensions.com/links/TestPDFfile.pdf"
-                    target="_blank"
-                  >
+                  <span className="px-4 py-3 font-bold flex gap-2">
                     <VscFilePdf className="text-2xl" /> <span>PDF Link</span>
                   </span>
                 </div>
               </a>
             </div>
 
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className=" mb-4">
                 {/* marks */}
                 <div className="form-control ">
@@ -42,7 +91,7 @@ const PendingAssignment = () => {
                     <input
                       required
                       type="text"
-                      name="marks"
+                      name="obtainMarks"
                       placeholder="Marks"
                       className="input input-bordered w-full"
                     />
@@ -60,7 +109,7 @@ const PendingAssignment = () => {
                     <textarea
                       required
                       className="textarea textarea-bordered w-full"
-                      name="description"
+                      name="feedback"
                       rows="2"
                       placeholder="..."
                     ></textarea>
@@ -104,22 +153,27 @@ const PendingAssignment = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>0</td>
-                <td>
-                  <button
-                    onClick={() =>
-                      document.getElementById("my_modal_2").showModal()
-                    }
-                    className="btn btn-sm btn-success text-white"
-                  >
-                    Give Mark
-                  </button>
-                </td>
-              </tr>
+
+              {loaderData.map((data, index) => (
+                <tr key={data._id}>
+                  <th>{index + 1}</th>
+                  <td>{data.assignmentTitle}</td>
+                  <td>{data.examineeInfo.name}</td>
+                  <td>{data.marks}</td>
+                  <td>
+                    <button
+                      disabled={data.examineeInfo.email === user.email}
+                      onClick={() => [
+                        document.getElementById("my_modal_2").showModal(),
+                        handleGiveMark(data._id),
+                      ]}
+                      className="btn btn-sm btn-success text-white disabled:cursor-not-allowed"
+                    >
+                      Give Mark
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
