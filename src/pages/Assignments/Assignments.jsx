@@ -7,6 +7,9 @@ import { useState } from "react";
 const Assignments = () => {
   const loaderData = useLoaderData();
   const [assignments, setAssignments] = useState(loaderData);
+  const [hard] = useState(loaderData);
+  const [medium] = useState(loaderData);
+  const [easy] = useState(loaderData);
 
   return (
     <div className="container lg:w-[1200px] mx-auto">
@@ -25,13 +28,48 @@ const Assignments = () => {
           </summary>
           <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
             <li className="hover:bg-[#E35353] hover:text-white rounded-lg">
-              <a onClick={""}>Hard</a>
+              <a
+                onClick={() => {
+                  setAssignments(loaderData);
+                }}
+              >
+                All
+              </a>
             </li>
             <li className="hover:bg-[#E35353] hover:text-white rounded-lg">
-              <a onClick={""}>Medium</a>
+              <a
+                onClick={() => {
+                  setAssignments(
+                    hard.filter((hard) => hard.difficultyLevel === "Hard")
+                  );
+                }}
+              >
+                Hard
+              </a>
             </li>
             <li className="hover:bg-[#E35353] hover:text-white rounded-lg">
-              <a onClick={""}>Easy</a>
+              <a
+                onClick={() => {
+                  setAssignments(
+                    medium.filter(
+                      (medium) => medium.difficultyLevel === "Medium"
+                    )
+                  );
+                }}
+              >
+                Medium
+              </a>
+            </li>
+            <li className="hover:bg-[#E35353] hover:text-white rounded-lg">
+              <a
+                onClick={() => {
+                  setAssignments(
+                    easy.filter((easy) => easy.difficultyLevel === "Easy")
+                  );
+                }}
+              >
+                Easy
+              </a>
             </li>
           </ul>
         </details>
