@@ -1,6 +1,8 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import PropTypes from "prop-types";
+import Lottie from "lottie-react";
+import Loading from "../../public/img/loading.json";
 
 const PrivateRoutes = ({ children }) => {
   const { user, loading } = useAuth();
@@ -8,8 +10,11 @@ const PrivateRoutes = ({ children }) => {
 
   if (loading)
     return (
-      <h1 className="text-4xl font-bold text-center my-20">Loading.....</h1>
+      <div className="flex justify-center my-20">
+        <Lottie className="w-32 " animationData={Loading} loop={true} />
+      </div>
     );
+
   if (user) return children;
 
   return <Navigate to="/login" state={location.pathname}></Navigate>;
