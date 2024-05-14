@@ -1,25 +1,7 @@
-import { useEffect, useState } from "react";
 import HomeCard from "../HomeCard/HomeCard";
-import axios from "axios";
+import PropTypes from "prop-types";
 
-const FeatureSection = () => {
-  const [assignments, setAssingments] = useState([]);
-  const [dataLoading, setDataLoading] = useState(true);
-
-  useEffect(() => {
-    axios("https://online-study-server-iota.vercel.app/assignments/")
-      .then((res) => {
-        setDataLoading(true);
-        setAssingments(res.data);
-        setDataLoading(false);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, []);
-
-  if (dataLoading)
-    return <h1 className="text-4xl font-bold text-center my-20">Loading...</h1>;
+const FeatureSection = ({ assignments }) => {
   return (
     <div className="space-y-10">
       <div className="text-center space-y-4">
@@ -41,3 +23,7 @@ const FeatureSection = () => {
 };
 
 export default FeatureSection;
+
+FeatureSection.propTypes = {
+  assignments: PropTypes.array,
+};
