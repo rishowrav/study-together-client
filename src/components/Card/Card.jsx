@@ -95,7 +95,7 @@ const Card = ({ assignment, setAssignments, assignments }) => {
           <div className="flex justify-between items-center font-[500]">
             <div className="flex items-center gap-1">
               <Link to={`/view_assignment/${assignment._id}`}>
-                <button className="btn btn-md text-[#E35353] hover:text-white duration-300 hover:border-[#E35353] border-1  rounded-sm border-[#E35353] bg-transparent  hover:bg-[#E35353]  ">
+                <button className="btn btn-md text-[#E35353] hover:text-white duration-300 hover:border-[#E35353] border-1  rounded-sm border-[#E35353] bg-transparent  hover:bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)]  ">
                   View Assignment
                 </button>
               </Link>
@@ -103,14 +103,14 @@ const Card = ({ assignment, setAssignments, assignments }) => {
             {user && (
               <div className=" space-x-3">
                 <Link to={`/updateAssignment/${assignment._id}`}>
-                  <button className="btn btn-md text-white   bg-[#E35353]   rounded-sm  hover:bg-[#E35353] border-none  ">
+                  <button className="btn btn-md text-white   bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)]   rounded-sm  hover:bg-[#E35353] border-none  ">
                     Update
                   </button>
                 </Link>
 
                 <button
                   onClick={() => handleDelete(assignment._id)}
-                  className="btn btn-md text-white   bg-[#E35353]   rounded-sm  hover:bg-[#E35353] border-none  "
+                  className="btn btn-md text-white   bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)]   rounded-sm  hover:bg-[#E35353] border-none  "
                 >
                   Delete
                 </button>

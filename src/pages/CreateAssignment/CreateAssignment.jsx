@@ -142,7 +142,7 @@ const CreateAssignment = () => {
           {/* form  row */}
           <div className="lg:flex mb-4 gap-4">
             {/* mark */}
-            <div className="form-control lg:w-1/2 w-full">
+            <div className="form-control lg:w-1/3 w-full">
               <label className="label">
                 <span className="label-text">Marks</span>
               </label>
@@ -160,21 +160,20 @@ const CreateAssignment = () => {
             </div>
 
             {/* date */}
-            <div className="form-control lg:w-1/2 w-full">
+            <div className="form-control lg:w-1/3  w-full">
               <label className="label">
                 <span className="label-text">Date</span>
               </label>
-              <label className="input-group w-full">
-                <DatePicker
-                  className="input input-bordered w-full"
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                />
-              </label>
+
+              <DatePicker
+                className="input input-bordered block w-full "
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
             </div>
 
             {/* assignment difficulty level */}
-            <div className="form-control lg:w-1/2 w-full ">
+            <div className="form-control lg:w-1/3 w-full ">
               <label className="label">
                 <span className="label-text">Assignment Difficulty Level</span>
               </label>
@@ -236,7 +235,7 @@ const CreateAssignment = () => {
           <input
             type="submit"
             value="Publish Assignment"
-            className="btn btn-block bg-[#e35353] text-white hover:bg-[#e35353]"
+            className="btn btn-block bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)] text-white hover:bg-[#e35353]"
           />
         </form>
       </div>

@@ -57,7 +57,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost text-xl lg:hidden bg-[#E35353] text-white mr-2 hover:bg-[#E35353]"
+              className="btn btn-ghost text-xl lg:hidden bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)] text-white mr-2 hover:bg-[#E35353]"
             >
               <FaBarsStaggered />
             </div>
@@ -90,7 +90,7 @@ const Navbar = () => {
                 <div
                   tabIndex={0}
                   role="button"
-                  className="btn btn-ghost btn-circle avatar z-[999]"
+                  className="btn bg-[linear-gradient(45deg,#FF6F6166,#9656A166)] btn-ghost btn-circle avatar z-[999]"
                 >
                   <div className="w-10 rounded-full">
                     <img
@@ -112,7 +112,7 @@ const Navbar = () => {
                   <li>
                     <button
                       onClick={signInOut}
-                      className="btn btn-sm text-white bg-[#E35353] border-none hover:bg-[#E35353]"
+                      className="btn btn-sm text-white bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)] border-none hover:bg-[#E35353]"
                     >
                       LogOut
                     </button>
@@ -127,13 +127,13 @@ const Navbar = () => {
               {" "}
               <Link
                 to="/login"
-                className="btn rounded-full px-6 text-white bg-[#E35353] border-none hover:bg-[#ff6f61]"
+                className="btn rounded-full px-6 text-white bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)] border-none hover:bg-[#ff6f61]"
               >
                 Login
               </Link>
               <Link
                 to="/registration"
-                className="btn rounded-full px-6  text-white bg-[#E35353] border-none hover:bg-[#ff6f61]"
+                className="btn rounded-full px-6  text-white bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)] border-none hover:bg-[#ff6f61]"
               >
                 Register
               </Link>

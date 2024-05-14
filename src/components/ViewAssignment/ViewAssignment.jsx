@@ -168,7 +168,7 @@ const ViewAssignment = () => {
             <button
               disabled={loaderData?.author.email === user?.email}
               onClick={() => document.getElementById("my_modal_2").showModal()}
-              className="At  btn At  btn-error disabled:cursor-not-allowed"
+              className="At  btn At  bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)] text-white disabled:cursor-not-allowed"
             >
               Take Assignment
             </button>

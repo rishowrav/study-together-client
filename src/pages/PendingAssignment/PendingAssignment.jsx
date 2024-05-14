@@ -148,7 +148,7 @@ const PendingAssignment = () => {
               <input
                 type="submit"
                 value="Submit"
-                className="btn btn-block bg-[#e35353] text-white hover:bg-[#e35353]"
+                className="btn btn-block bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)] text-white hover:bg-[#e35353]"
               />
             </form>
           </div>
