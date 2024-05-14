@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
   const { loginUser, loginWithGoogle } = useAuth();
@@ -14,14 +15,25 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    const user = { email, password };
-    console.table(user);
-
     // login user with firebase authentication
     loginUser(email, password)
       .then((res) => {
         console.log(res.user);
         toast.success("Successfully login");
+
+        // get token form server using email
+        axios
+          .post(
+            "http://localhost:3000/jwt",
+            { email },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
         navigate("/");
       })
@@ -35,6 +47,20 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("Successfully login with google");
+
+        // get token form server using email
+        axios
+          .post(
+            "http://localhost:3000/jwt",
+            { email: res?.user?.email },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
         navigate("/");
       })

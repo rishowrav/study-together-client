@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Registration = () => {
   const { createUser, setUser } = useAuth();
@@ -24,6 +25,20 @@ const Registration = () => {
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
+
+        axios
+          .post(
+            "http://localhost:3000/jwt",
+            { email: res?.user?.email },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
         // set name and profileURL
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -32,6 +47,7 @@ const Registration = () => {
           .then(() => {
             setUser({ ...user, photoURL: photo, displayName: name, email });
             toast.success("Successfully Register your Account");
+
             navigate("/");
           })
           .catch(() => {

@@ -29,7 +29,7 @@ const PendingAssignment = () => {
     const dataInfo = {
       obtainMark,
       feedback,
-      status: "Complete",
+      status: "Completed",
     };
 
     axios
@@ -59,15 +59,17 @@ const PendingAssignment = () => {
                 <div className="avatar">
                   <div className="mask mask-squircle w-12 h-12">
                     <img
-                      src={user.photoURL}
+                      src={modalData?.examineeInfo?.photo}
                       alt="Avatar Tailwind CSS Component"
                     />
                   </div>
                 </div>
                 <div>
-                  <div className="font-bold">{user.displayName}</div>
+                  <div className="font-bold">
+                    {modalData?.examineeInfo?.name}
+                  </div>
                   <div className="text-sm opacity-50 flex justify-start">
-                    Examiner
+                    Examinee
                   </div>
                 </div>
               </div>
