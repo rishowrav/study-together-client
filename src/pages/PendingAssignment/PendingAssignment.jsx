@@ -12,7 +12,7 @@ const PendingAssignment = () => {
   const loaderData = useLoaderData();
 
   const handleGiveMark = (id) => {
-    const data = loaderData.find((data) => data._id === id);
+    const data = loaderData.data.find((data) => data._id === id);
     setModalData(data);
 
     // handle submit
