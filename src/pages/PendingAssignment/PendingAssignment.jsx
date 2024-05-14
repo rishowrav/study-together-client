@@ -54,13 +54,18 @@ const PendingAssignment = () => {
         dataInfo
       )
       .then((res) => {
-        console.log(res.data);
-        setModifiedCount(res.data.modifiedCount);
-        form.reset();
-        toast.success("Successfully Submitted");
+        if (res.data.modifiedCount) {
+          setModifiedCount(res.data.modifiedCount);
+          form.reset();
+          toast.success("Successfully Submitted");
+        } else {
+          toast.error(
+            "something is wrong modifiedCount",
+            res.data.modifiedCount
+          );
+        }
       })
-      .catch((error) => {
-        console.log(error.message);
+      .catch(() => {
         toast.error("something is wrong");
       });
   };

@@ -16,6 +16,14 @@ const Footer = () => {
 
           <div className="flex flex-wrap justify-center mt-6 -mx-4">
             <Link
+              to="/"
+              href="#"
+              className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
+              aria-label="Reddit"
+            >
+              Home
+            </Link>
+            <Link
               to="assignments"
               href="#"
               className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
