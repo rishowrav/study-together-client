@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
+import useAuth from "../../Hooks/useAuth";
 
 const Footer = () => {
+  const { user } = useAuth();
+
   return (
     <footer className="shadow-sm">
       <hr className="bg-base-200 border-t-[1px]" />
@@ -21,23 +24,27 @@ const Footer = () => {
               Assignment
             </Link>
 
-            <Link
-              to="create_assignment"
-              href="#"
-              className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
-              aria-label="Reddit"
-            >
-              Create Assignment
-            </Link>
+            {user && (
+              <span>
+                <Link
+                  to="create_assignment"
+                  href="#"
+                  className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
+                  aria-label="Reddit"
+                >
+                  Create Assignment
+                </Link>
 
-            <Link
-              to="pending_assignment"
-              href="#"
-              className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
-              aria-label="Reddit"
-            >
-              Pending Assignment
-            </Link>
+                <Link
+                  to="pending_assignment"
+                  href="#"
+                  className="mx-4 text-sm  transition-colors duration-300 hover:text-blue-500 "
+                  aria-label="Reddit"
+                >
+                  Pending Assignment
+                </Link>
+              </span>
+            )}
           </div>
         </div>
 
