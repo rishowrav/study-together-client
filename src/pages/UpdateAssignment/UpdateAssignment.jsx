@@ -43,7 +43,9 @@ const UpdateAssignment = () => {
     // data sending to server
     axios
       .patch(
-        `https://online-study-server-iota.vercel.app/assignment/${loaderData._id}`,
+        `https://online-study-server-iota.vercel.app
+
+/assignment/${loaderData._id}`,
         assignmentInfo
       )
       .then((response) => {

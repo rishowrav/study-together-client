@@ -60,15 +60,15 @@ const Registration = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">
-      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-base-100 rounded-lg shadow-lg  lg:max-w-4xl ">
+    <div className="flex justify-center items-center min-h-[calc(100vh-306px)] mt-10">
+      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-base-100 rounded-lg shadow-2xl  lg:max-w-4xl ">
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex justify-center mx-auto">
             <img className="w-auto h-7 sm:h-8" src={Logo} alt="" />
           </div>
 
           <p className="mt-3 text-xl text-center  ">
-            Get Your Free Account Now.
+            Create an account to begin
           </p>
 
           <form onSubmit={handleRegister}>
@@ -77,9 +77,10 @@ const Registration = () => {
                 className="block mb-2 text-sm font-medium  "
                 htmlFor="name"
               >
-                Username
+                Name
               </label>
               <input
+                placeholder="Name"
                 id="name"
                 autoComplete="name"
                 name="name"
@@ -95,6 +96,7 @@ const Registration = () => {
                 Photo URL
               </label>
               <input
+                placeholder="Photo URL"
                 id="photo"
                 autoComplete="photo"
                 name="photo"
@@ -110,6 +112,7 @@ const Registration = () => {
                 Email Address
               </label>
               <input
+                placeholder="Email"
                 id="LoggingEmailAddress"
                 autoComplete="email"
                 name="email"
@@ -129,6 +132,7 @@ const Registration = () => {
               </div>
 
               <input
+                placeholder="Password"
                 id="loggingPassword"
                 autoComplete="current-password"
                 name="password"
@@ -139,7 +143,7 @@ const Registration = () => {
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[linear-gradient(45deg,#FF6F61,#9656A1B3)] rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
               >
                 Sign Up
               </button>
@@ -162,7 +166,7 @@ const Registration = () => {
         <div
           className="hidden bg-cover bg-center lg:block lg:w-1/2"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80')`,
+            backgroundImage: `url('/img/sign2.jpg')`,
           }}
         ></div>
       </div>

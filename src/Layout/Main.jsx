@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <div>
       <Toaster />
-      <div className="container mx-auto">
+      <div className="">
         <Navbar></Navbar>
       </div>
 

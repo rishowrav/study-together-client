@@ -159,7 +159,7 @@ const PendingAssignment = () => {
             <tbody>
               {/* row 1 */}
 
-              {loaderData.map((data, index) => (
+              {loaderData?.data.map((data, index) => (
                 <tr key={data._id}>
                   <th>{index + 1}</th>
                   <td>{data.assignmentTitle}</td>

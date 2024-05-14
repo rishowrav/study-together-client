@@ -31,7 +31,9 @@ const Card = ({ assignment, setAssignments, assignments }) => {
         // axios delete
         axios
           .delete(
-            `https://online-study-server-iota.vercel.app/assignment/${id}`
+            `https://online-study-server-iota.vercel.app
+
+/assignment/${id}`
           )
           .then((res) => {
             if (res.data.deletedCount) {
@@ -98,20 +100,22 @@ const Card = ({ assignment, setAssignments, assignments }) => {
                 </button>
               </Link>
             </div>
-            <div className=" space-x-3">
-              <Link to={`/updateAssignment/${assignment._id}`}>
-                <button className="btn btn-md text-white   bg-[#E35353]   rounded-sm  hover:bg-[#E35353] border-none  ">
-                  Update
-                </button>
-              </Link>
+            {user && (
+              <div className=" space-x-3">
+                <Link to={`/updateAssignment/${assignment._id}`}>
+                  <button className="btn btn-md text-white   bg-[#E35353]   rounded-sm  hover:bg-[#E35353] border-none  ">
+                    Update
+                  </button>
+                </Link>
 
-              <button
-                onClick={() => handleDelete(assignment._id)}
-                className="btn btn-md text-white   bg-[#E35353]   rounded-sm  hover:bg-[#E35353] border-none  "
-              >
-                Delete
-              </button>
-            </div>
+                <button
+                  onClick={() => handleDelete(assignment._id)}
+                  className="btn btn-md text-white   bg-[#E35353]   rounded-sm  hover:bg-[#E35353] border-none  "
+                >
+                  Delete
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

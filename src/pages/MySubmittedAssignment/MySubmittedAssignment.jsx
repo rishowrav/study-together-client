@@ -37,7 +37,7 @@ const MySubmittedAssignment = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {loaderData
+              {loaderData?.data
                 .filter((data) => data.examineeInfo.email === user.email)
                 .map((data, index) => (
                   <tr key={data._id}>

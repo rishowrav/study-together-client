@@ -11,6 +11,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import MySubmittedAssignment from "../pages/MySubmittedAssignment/MySubmittedAssignment";
 import ViewAssignment from "../components/ViewAssignment/ViewAssignment";
 import UpdateAssignment from "../pages/UpdateAssignment/UpdateAssignment";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: () =>
-          fetch("https://online-study-server-iota.vercel.app/answers"),
+          axios("https://online-study-server-iota.vercel.app/answers", {
+            withCredentials: true,
+          }),
       },
       {
         path: "/login",
@@ -61,7 +64,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: () =>
-          fetch("https://online-study-server-iota.vercel.app/answers"),
+          axios("https://online-study-server-iota.vercel.app/answers", {
+            withCredentials: true,
+          }),
       },
       {
         path: "/view_assignment/:id",

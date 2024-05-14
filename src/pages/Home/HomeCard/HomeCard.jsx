@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 const HomeCard = ({ assignment }) => {
   return (
@@ -30,19 +29,6 @@ const HomeCard = ({ assignment }) => {
         </div>
 
         <h2 className=" text-xl font-bold  ">{assignment?.assignmentTitle}</h2>
-
-        <hr className="border border-dashed my-2 mt-2" />
-
-        <div className="flex justify-between items-center font-[500]">
-          <div className="flex items-center gap-1"></div>
-          <div className=" space-x-3">
-            <Link to={`/view_assignment/${assignment._id}`}>
-              <button className="btn btn-md text-[#E35353] hover:text-white duration-300 hover:border-[#E35353] border-1  rounded-sm border-[#E35353] bg-transparent  hover:bg-[#E35353]  ">
-                View Assignment
-              </button>
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   );

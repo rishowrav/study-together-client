@@ -49,17 +49,14 @@ const ViewAssignment = () => {
     <section>
       {/* modal give mark */}
 
-      <dialog id="my_modal_2" className="At nulla temporibus modal">
+      <dialog id="my_modal_2" className="At nulla temporibus modal ">
         <div className="At nulla temporibus modal-box">
           <div className="text-center">
             <div className="my-2">
               <div className="">
                 <div className="avatar">
                   <div className="mask mask-squircle w-12 h-12">
-                    <img
-                      src={user?.photoURL}
-                      alt="Avatar Tailwind CSS Component"
-                    />
+                    <img src={user?.photoURL} alt="" />
                   </div>
                 </div>
                 <div>
@@ -119,10 +116,10 @@ const ViewAssignment = () => {
         </form>
       </dialog>
 
-      <div className="At flex flex-col lg:flex-row   card lg:At  card-side bg-base-100 shadow-xl container lg:w-[1200px] mx-auto">
+      <div className="At flex flex-col mt-10 lg:flex-row   card lg:At   card-side bg-base-100 shadow-xl container lg:w-[1200px] mx-auto">
         <figure className="lg:w-5/12  rounded-tr-2xl rounded-bl-none lg:rounded-tr-none">
           <img
-            className="object-cover"
+            className="object-fill h-full rounded-bl-2xl"
             src={loaderData?.thumbnailURL}
             alt="Album"
           />
