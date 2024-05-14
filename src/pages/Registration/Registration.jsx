@@ -5,39 +5,34 @@ import { updateProfile } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const Registration = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { createUser, setUser } = useAuth();
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const name = form.name.value;
-    const photo = form.photo.value;
-    const email = form.email.value;
-    const password = form.password.value;
-
+  const handleRegister = ({ name, photo, email, password }) => {
     const user = { name, photo, email, password };
 
     // firebase email password login
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
-
-        axios
-          .post(
-            "https://online-study-server-iota.vercel.app/jwt",
-            { email: res?.user?.email },
-            { withCredentials: true }
-          )
-          .then((res) => {
-            console.log(res.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        axios.post(
+          "https://online-study-server-iota.vercel.app/jwt",
+          { email: res?.user?.email },
+          { withCredentials: true }
+        );
+        // .then((res) => {
+        //   console.log(res.data);
+        // })
+        // .catch((error) => {
+        //   console.log(error);
+        // });
 
         // set name and profileURL
         updateProfile(auth.currentUser, {
@@ -71,7 +66,7 @@ const Registration = () => {
             Create an account to begin
           </p>
 
-          <form onSubmit={handleRegister}>
+          <form onSubmit={handleSubmit(handleRegister)}>
             <div className="mt-4">
               <label
                 className="block mb-2 text-sm font-medium  "
@@ -80,13 +75,16 @@ const Registration = () => {
                 Name
               </label>
               <input
+                {...register("name", { required: true })}
                 placeholder="Name"
                 id="name"
                 autoComplete="name"
-                name="name"
                 className="block w-full px-4 py-2  bg-base-100 border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
               />
+              {errors.name && (
+                <p className="text-sm text-red-600">Name is required.</p>
+              )}
             </div>
             <div className="mt-4">
               <label
@@ -96,13 +94,16 @@ const Registration = () => {
                 Photo URL
               </label>
               <input
+                {...register("photo", { required: true })}
                 placeholder="Photo URL"
                 id="photo"
                 autoComplete="photo"
-                name="photo"
                 className="block w-full px-4 py-2  bg-base-100 border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
               />
+              {errors.photo && (
+                <p className="text-sm text-red-600">Photo is required.</p>
+              )}
             </div>
             <div className="mt-4">
               <label
@@ -112,13 +113,16 @@ const Registration = () => {
                 Email Address
               </label>
               <input
+                {...register("email", { required: true })}
                 placeholder="Email"
                 id="LoggingEmailAddress"
                 autoComplete="email"
-                name="email"
                 className="block w-full px-4 py-2  bg-base-100 border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="email"
               />
+              {errors.email && (
+                <p className="text-sm text-red-600">Email is required.</p>
+              )}
             </div>
 
             <div className="mt-4">
@@ -130,15 +134,17 @@ const Registration = () => {
                   Password
                 </label>
               </div>
-
               <input
+                {...register("password", { required: true })}
                 placeholder="Password"
                 id="loggingPassword"
                 autoComplete="current-password"
-                name="password"
                 className="block w-full px-4 py-2  bg-base-100 border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="password"
-              />
+              />{" "}
+              {errors.password && (
+                <p className="text-sm text-red-600">Password is required.</p>
+              )}
             </div>
             <div className="mt-6">
               <button

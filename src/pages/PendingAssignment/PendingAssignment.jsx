@@ -163,7 +163,7 @@ const PendingAssignment = () => {
           <h2 className="text-lg font-medium  ">My Submitted Assignments</h2>
 
           <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
-            05 Assignments
+            0{newPendingData.length} Assignments
           </span>
         </div>
 

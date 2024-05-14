@@ -5,6 +5,9 @@ import useAuth from "../../Hooks/useAuth";
 const MySubmittedAssignment = () => {
   const { user } = useAuth();
   const loaderData = useLoaderData();
+  const mySubmittedAssignment = loaderData?.data.filter(
+    (data) => data.examineeInfo.email === user.email
+  );
 
   return (
     <section>
@@ -18,7 +21,7 @@ const MySubmittedAssignment = () => {
           </h2>
 
           <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
-            03 Assignments
+            0{mySubmittedAssignment.length} Assignments
           </span>
         </div>
 
@@ -37,28 +40,26 @@ const MySubmittedAssignment = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {loaderData?.data
-                .filter((data) => data.examineeInfo.email === user.email)
-                .map((data, index) => (
-                  <tr key={data._id}>
-                    <th>{index + 1}</th>
-                    <td>{data.assignmentTitle}</td>
-                    <td>
-                      <button
-                        className={`btn btn-sm  ${
-                          data.status === "Pending"
-                            ? "btn-warning"
-                            : "btn-success text-white"
-                        }`}
-                      >
-                        {data.status}
-                      </button>
-                    </td>
-                    <td>{data.marks}</td>
-                    <td>{data.obtainMark}</td>
-                    <td>{data.feedback}</td>
-                  </tr>
-                ))}
+              {mySubmittedAssignment.map((data, index) => (
+                <tr key={data._id}>
+                  <th>{index + 1}</th>
+                  <td>{data.assignmentTitle}</td>
+                  <td>
+                    <button
+                      className={`btn btn-sm  ${
+                        data.status === "Pending"
+                          ? "btn-warning"
+                          : "btn-success text-white"
+                      }`}
+                    >
+                      {data.status}
+                    </button>
+                  </td>
+                  <td>{data.marks}</td>
+                  <td>{data.obtainMark}</td>
+                  <td>{data.feedback}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
