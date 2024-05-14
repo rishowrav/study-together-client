@@ -6,32 +6,35 @@ import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const CreateAssignment = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { user } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
 
   const navigate = useNavigate();
 
   // handle create assignment
-  const handleCreateAssignment = (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-
-    const assignmentTitle = form.assignment_title.value;
-    const description = form.description.value;
-    const thumbnailURL = form.thumbnail_url.value;
-    const marks = form.marks.value;
-    const difficultyLevel = form.difficultyLevel.value;
+  const handleCreateAssignment = ({
+    assignment_title,
+    description,
+    thumbnail_url,
+    marks,
+    difficultyLevel,
+  }) => {
     const date = startDate;
 
     const assignmentInfo = {
-      assignmentTitle,
-      description,
-      thumbnailURL,
-      marks,
-      difficultyLevel,
+      assignmentTitle: assignment_title,
+      description: description,
+      thumbnailURL: thumbnail_url,
+      marks: marks,
+      difficultyLevel: difficultyLevel,
       date,
       author: {
         name: user.displayName,
@@ -69,7 +72,7 @@ const CreateAssignment = () => {
         <h2 className="text-5xl text-center font-bold mb-6">
           Create a New Assignment
         </h2>
-        <form onSubmit={handleCreateAssignment}>
+        <form onSubmit={handleSubmit(handleCreateAssignment)}>
           {/* Assignment title row */}
           <div className=" mb-4">
             <div className="form-control ">
@@ -78,12 +81,16 @@ const CreateAssignment = () => {
               </label>
               <label className="input-group">
                 <input
-                  required
+                  {...register("assignment_title", { required: true })}
                   type="text"
-                  name="assignment_title"
                   placeholder="Assignment Title"
                   className="input input-bordered w-full"
                 />
+                {errors.assignment_title && (
+                  <p className="text-sm text-red-600">
+                    Assignment Title is required.
+                  </p>
+                )}
               </label>
             </div>
           </div>
@@ -96,12 +103,16 @@ const CreateAssignment = () => {
               </label>
               <label className="input-group">
                 <textarea
-                  required
+                  {...register("description", { required: true })}
                   className="textarea textarea-bordered w-full"
-                  name="description"
                   rows="2"
                   placeholder="Description"
-                ></textarea>
+                ></textarea>{" "}
+                {errors.description && (
+                  <p className="text-sm text-red-600">
+                    Description is required.
+                  </p>
+                )}
               </label>
             </div>
           </div>
@@ -114,12 +125,16 @@ const CreateAssignment = () => {
               </label>
               <label className="input-group">
                 <input
-                  required
+                  {...register("thumbnail_url", { required: true })}
                   type="text"
-                  name="thumbnail_url"
                   placeholder="Thumbnail URL"
                   className="input input-bordered w-full"
-                />
+                />{" "}
+                {errors.thumbnail_url && (
+                  <p className="text-sm text-red-600">
+                    Thumbnail URL is required.
+                  </p>
+                )}
               </label>
             </div>
           </div>
@@ -133,12 +148,14 @@ const CreateAssignment = () => {
               </label>
               <label className="input-group">
                 <input
-                  required
+                  {...register("marks", { required: true })}
                   type="text"
-                  name="marks"
                   placeholder="Marks"
                   className="input input-bordered w-full"
-                />
+                />{" "}
+                {errors.marks && (
+                  <p className="text-sm text-red-600">Marks is required.</p>
+                )}
               </label>
             </div>
 
@@ -163,9 +180,8 @@ const CreateAssignment = () => {
               </label>
               <label className="input-group">
                 <select
-                  required
+                  {...register("difficultyLevel", { required: true })}
                   className="select select-bordered w-full "
-                  name="difficultyLevel"
                 >
                   <option disabled selected>
                     Select Difficulty Level
@@ -174,6 +190,11 @@ const CreateAssignment = () => {
                   <option defaultValue="Medium">Medium</option>
                   <option defaultValue="Easy">Easy</option>
                 </select>
+                {errors.difficultyLevel && (
+                  <p className="text-sm text-red-600">
+                    Select difficulty Level
+                  </p>
+                )}
               </label>
             </div>
           </div>
