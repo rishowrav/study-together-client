@@ -5,14 +5,30 @@ import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const PendingAssignment = () => {
+  const loaderData = useLoaderData();
   const [modalData, setModalData] = useState({});
   const { user } = useAuth();
-  const loaderData = useLoaderData();
+  const [pendingDatas, setPendingDatas] = useState([]);
+  const [modifiedCount, setModifiedCount] = useState(0);
+
+  useEffect(() => {
+    axios("https://online-study-server-iota.vercel.app/answers", {
+      withCredentials: true,
+    }).then((res) => {
+      setPendingDatas(res.data);
+    });
+  }, [modifiedCount]);
+
+  const newPendingData = pendingDatas.filter(
+    (data) => data.obtainMark === "none" || data.feedback === "none"
+  );
 
   const handleGiveMark = (id) => {
     const data = loaderData.data.find((data) => data._id === id);
+
     setModalData(data);
 
     // handle submit
@@ -39,6 +55,8 @@ const PendingAssignment = () => {
       )
       .then((res) => {
         console.log(res.data);
+        setModifiedCount(res.data.modifiedCount);
+        form.reset();
         toast.success("Successfully Submitted");
       })
       .catch((error) => {
@@ -159,7 +177,7 @@ const PendingAssignment = () => {
             <tbody>
               {/* row 1 */}
 
-              {loaderData?.data.map((data, index) => (
+              {newPendingData.map((data, index) => (
                 <tr key={data._id}>
                   <th>{index + 1}</th>
                   <td>{data.assignmentTitle}</td>
