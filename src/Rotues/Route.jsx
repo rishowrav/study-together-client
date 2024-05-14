@@ -24,7 +24,8 @@ const router = createBrowserRouter([
       {
         path: "/assignments",
         element: <Assignments></Assignments>,
-        loader: () => fetch("http://localhost:3000/assignments"),
+        loader: () =>
+          fetch("https://online-study-server-iota.vercel.app/assignments"),
       },
       {
         path: "/create_assignment",
@@ -41,7 +42,8 @@ const router = createBrowserRouter([
             <PendingAssignment></PendingAssignment>
           </PrivateRoutes>
         ),
-        loader: () => fetch("http://localhost:3000/answers"),
+        loader: () =>
+          fetch("https://online-study-server-iota.vercel.app/answers"),
       },
       {
         path: "/login",
@@ -58,7 +60,8 @@ const router = createBrowserRouter([
             <MySubmittedAssignment></MySubmittedAssignment>
           </PrivateRoutes>
         ),
-        loader: () => fetch("http://localhost:3000/answers"),
+        loader: () =>
+          fetch("https://online-study-server-iota.vercel.app/answers"),
       },
       {
         path: "/view_assignment/:id",
@@ -68,7 +71,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/assignments/${params.id}`),
+          fetch(
+            `https://online-study-server-iota.vercel.app/assignments/${params.id}`
+          ),
       },
       {
         path: "/updateAssignment/:id",
@@ -78,7 +83,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/assignments/${params.id}`),
+          fetch(
+            `https://online-study-server-iota.vercel.app/assignments/${params.id}`
+          ),
       },
     ],
   },

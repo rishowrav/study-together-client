@@ -9,94 +9,86 @@ const FAQ = () => {
           Questions? Look Here
         </h2>
       </div>
-      <div className=" flex lg:flex-row  flex-col-reverse gap-4">
-        {/* faq all */}
-        <div className="flex flex-col gap-4 lg:w-3/5">
-          {/* qus-1 */}
-          <div
-            data-aos="fade-right"
-            data-aos-duration="1000"
-            tabIndex={0}
-            className="collapse collapse-open rounded-sm p-2  bg-base-200 "
-          >
+
+      {/* new FAQ */}
+      <div className="flex flex-col-reverse lg:flex-row lg:space-x-4 ">
+        <div className="lg:w-3/5 space-y-4">
+          <div className="collapse collapse-arrow rounded-none bg-base-200 py-2 ">
+            <input type="radio" name="my-accordion-2" defaultChecked />
             <div className="collapse-title text-xl font-medium">
-              1 - What is the process for buying a home?
+              How do I join a study group
             </div>
             <div className="collapse-content">
               <p>
-                The home buying process involves financial preparation, defining
-                preferences, house hunting, making an offer, home inspection,
-                finalizing financing, closing the deal, and moving in. It
-                includes steps such as assessing finances, viewing properties,
-                negotiating offers, conducting inspections, and completing
-                paperwork to secure ownership of the property.
+                To join a study group, simply sign up for an account on our
+                platform and browse through the available groups. Once you find
+                one that interests you, click on the Join Group button and you
+                will be connected with fellow learners.
               </p>
             </div>
           </div>
-          {/* qus-2 */}
-          <div
-            tabIndex={0}
-            className="collapse collapse-plus rounded-sm p-2  bg-base-200 "
-          >
+          <div className="collapse collapse-arrow rounded-none bg-base-200 py-2">
+            <input type="radio" name="my-accordion-2" defaultChecked />
             <div className="collapse-title text-xl font-medium">
-              2 - How can I get pre-approved for a mortgage?
+              Can I create my own study group?
             </div>
             <div className="collapse-content">
               <p>
-                To get pre-approved for a mortgage, contact lenders to submit
-                financial information such as income, assets, debts, and credit
-                history. They will assess your eligibility and provide a
-                pre-approval letter indicating the amount you can borrow, aiding
-                in your home search.
+                {" "}
+                Absolutely! You can create your own study group by navigating to
+                the Create Group section on our website. Fill out the necessary
+                details such as the groups subject, meeting times, and any
+                specific requirements, and invite others to join you in your
+                learning journey.
               </p>
             </div>
           </div>
-          {/* qus-3 */}
-          <div
-            tabIndex={0}
-            className="collapse collapse-plus rounded-sm p-2  bg-base-200"
-          >
+          <div className="collapse collapse-arrow rounded-none bg-base-200 py-2">
+            <input type="radio" name="my-accordion-2" defaultChecked />
             <div className="collapse-title text-xl font-medium">
-              3- What is the difference between a buyers agent?
+              Are the study sessions conducted online or in person?
             </div>
             <div className="collapse-content">
               <p>
-                A buyers agent represents the buyers interests in a real estate
-                transaction, providing guidance, negotiating offers, and helping
-                find suitable properties. They work exclusively for the buyer,
-                whereas a sellers agent represents the sellers interests. Both
-                agents facilitate the buying process but advocate for different
-                parties.
+                The majority of our study sessions are conducted online to
+                provide convenience and accessibility to our users. However,
+                some groups may choose to meet in person depending on their
+                preferences and location.
               </p>
             </div>
           </div>
-          {/* qus-4 */}
-          <div
-            tabIndex={0}
-            className="collapse collapse-plus rounded-sm p-2 bg-base-200"
-          >
+          <div className="collapse collapse-arrow rounded-none bg-base-200 py-2">
+            <input type="radio" name="my-accordion-2" defaultChecked />
             <div className="collapse-title text-xl font-medium">
-              4- Contrary to popular Lorem Ipsum this item is not simply ?
+              What if I can not find a study group for my specific subject?
             </div>
             <div className="collapse-content">
               <p>
-                Contrary to popular Lorem Ipsum, this item is not simply
-                placeholder text. It serves a specific purpose, conveying
-                meaningful information or prompting action. Whether its
-                descriptive content, a call-to-action, or informative text, it
-                engages readers and adds value to the communication, rather than
-                merely filling space.
+                {" "}
+                If you can not find a study group for your specific subject, you
+                can either create your own group or express your interest in a
+                particular subject area on our platform. We regularly update our
+                offerings based on user feedback and demand.
+              </p>
+            </div>
+          </div>
+          <div className="collapse collapse-arrow rounded-none bg-base-200 py-2">
+            <input type="radio" name="my-accordion-2" defaultChecked />
+            <div className="collapse-title text-xl font-medium">
+              Is there a fee to join or create study groups?
+            </div>
+            <div className="collapse-content">
+              <p>
+                No, there is no fee to join or create study groups on our
+                platform. We believe in fostering a collaborative learning
+                community that is accessible to all, regardless of financial
+                constraints.
               </p>
             </div>
           </div>
         </div>
-        {/* faq img */}
-        <div className="lg:w-2/5">
-          <img
-            src={"https://i.ibb.co/FxLqMXN/pexels-ann-h-6266316.jpg"}
-            alt="faq"
-            className="object-cover w-full h-full"
-          />
+        <div className="lg:w-2/5 lg:mb-0 mb-4">
+          <img className="object-cover h-full" src="/img/faq.jpg" alt="" />
         </div>
       </div>
     </section>

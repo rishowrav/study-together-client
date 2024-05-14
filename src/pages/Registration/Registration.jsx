@@ -28,7 +28,7 @@ const Registration = () => {
 
         axios
           .post(
-            "http://localhost:3000/jwt",
+            "https://online-study-server-iota.vercel.app/jwt",
             { email: res?.user?.email },
             { withCredentials: true }
           )

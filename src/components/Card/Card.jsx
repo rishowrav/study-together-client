@@ -30,7 +30,9 @@ const Card = ({ assignment, setAssignments, assignments }) => {
       if (result.isConfirmed) {
         // axios delete
         axios
-          .delete(`http://localhost:3000/assignment/${id}`)
+          .delete(
+            `https://online-study-server-iota.vercel.app/assignment/${id}`
+          )
           .then((res) => {
             if (res.data.deletedCount) {
               const reamining = assignments.filter(

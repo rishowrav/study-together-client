@@ -33,7 +33,10 @@ const PendingAssignment = () => {
     };
 
     axios
-      .patch(`http://localhost:3000/feedback/${modalData._id}`, dataInfo)
+      .patch(
+        `https://online-study-server-iota.vercel.app/feedback/${modalData._id}`,
+        dataInfo
+      )
       .then((res) => {
         console.log(res.data);
         toast.success("Successfully Submitted");

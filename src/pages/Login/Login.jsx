@@ -24,7 +24,7 @@ const Login = () => {
         // get token form server using email
         axios
           .post(
-            "http://localhost:3000/jwt",
+            "https://online-study-server-iota.vercel.app/jwt",
             { email },
             { withCredentials: true }
           )
@@ -51,7 +51,7 @@ const Login = () => {
         // get token form server using email
         axios
           .post(
-            "http://localhost:3000/jwt",
+            "https://online-study-server-iota.vercel.app/jwt",
             { email: res?.user?.email },
             { withCredentials: true }
           )

@@ -42,7 +42,10 @@ const CreateAssignment = () => {
 
     // data sending to server
     axios
-      .post("http://localhost:3000/assignment", assignmentInfo)
+      .post(
+        "https://online-study-server-iota.vercel.app/assignment",
+        assignmentInfo
+      )
       .then((response) => {
         if (response.data.insertedId) {
           toast.success("Successfully Assignment Created");

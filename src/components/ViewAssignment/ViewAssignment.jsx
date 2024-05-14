@@ -33,7 +33,7 @@ const ViewAssignment = () => {
     };
 
     axios
-      .post("http://localhost:3000/answer", dataInfo)
+      .post("https://online-study-server-iota.vercel.app/answer", dataInfo)
       .then((res) => {
         console.log(res.data);
         toast.success("Successfully Submitted");
@@ -57,13 +57,13 @@ const ViewAssignment = () => {
                 <div className="avatar">
                   <div className="mask mask-squircle w-12 h-12">
                     <img
-                      src={user.photoURL}
+                      src={user?.photoURL}
                       alt="Avatar Tailwind CSS Component"
                     />
                   </div>
                 </div>
                 <div>
-                  <div className="font-bold">{user.displayName}</div>
+                  <div className="font-bold">{user?.displayName}</div>
                   <div className="text-sm opacity-50">Examinee</div>
                 </div>
               </div>
@@ -123,7 +123,7 @@ const ViewAssignment = () => {
         <figure className="lg:w-5/12  rounded-tr-2xl rounded-bl-none lg:rounded-tr-none">
           <img
             className="object-cover"
-            src={loaderData.thumbnailURL}
+            src={loaderData?.thumbnailURL}
             alt="Album"
           />
         </figure>
@@ -134,42 +134,42 @@ const ViewAssignment = () => {
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
                 <img
-                  src={loaderData.author.photo}
+                  src={loaderData?.author?.photo}
                   alt="Avatar Tailwind CSS Component"
                 />
               </div>
             </div>
             <div>
-              <div className="font-bold"> {loaderData.author.name}</div>
+              <div className="font-bold"> {loaderData?.author?.name}</div>
               <div className="text-sm opacity-50">Author</div>
             </div>
           </div>
           {/* date */}
           <p>
             <span className="font-bold">Date:</span>{" "}
-            <span>{new Date(loaderData.date).toLocaleDateString()}</span>
+            <span>{new Date(loaderData?.date).toLocaleDateString()}</span>
           </p>
 
           <div className="flex justify-between items-center">
             <h2 className="At card-title text-4xl font-bold">
-              {loaderData.assignmentTitle}
+              {loaderData?.assignmentTitle}
             </h2>
             <button className="btn font-bold text-2xl">
-              {loaderData.difficultyLevel}
+              {loaderData?.difficultyLevel}
             </button>
           </div>
           <p>
             <span className="font-bold">Description: </span>
-            {loaderData.description}
+            {loaderData?.description}
           </p>
           <h3>
             <span className="font-bold">Marks: </span>
-            <span className="text-5xl font-bold">{loaderData.marks}</span>
+            <span className="text-5xl font-bold">{loaderData?.marks}</span>
           </h3>
 
           <div className="At  card-actions justify-end">
             <button
-              disabled={loaderData.author.email === user.email}
+              disabled={loaderData?.author.email === user?.email}
               onClick={() => document.getElementById("my_modal_2").showModal()}
               className="At  btn At  btn-error disabled:cursor-not-allowed"
             >

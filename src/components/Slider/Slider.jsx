@@ -15,7 +15,7 @@ const Slider = () => {
       <Swiper
         centeredSlides={true}
         autoplay={{
-          delay: 42500,
+          delay: 2500,
           disableOnInteraction: false,
         }}
         speed={1000}
@@ -37,13 +37,12 @@ const Slider = () => {
           >
             <div className="text-center text-white space-y-8">
               <h2 className="md:text-5xl text-4xl font-bold  text-white capitalize  mx-auto w-4/5">
-                Rustic Stoneware
+                Interactive Study Groups
               </h2>
               <p className="lg:w-2/3 mx-auto w-4/5">
-                Our rustic stoneware collection is an exciting range of handmade
-                tableware and accessories. We have taken the simplicity and
-                authenticity of studio style pottery, to create a range that is
-                affordable for home
+                Engage in dynamic study sessions with interactive discussions,
+                group activities, and shared resources. Foster deeper
+                understanding and collaboration with fellow learners.
               </p>
               <div className="space-x-4">
                 <button className="btn btn-lg border-[3px] font-bold bg-white hover:border-white text-[#FF6F61]  border-white hover:bg-transparent hover:text-white">
@@ -53,17 +52,18 @@ const Slider = () => {
             </div>
           </div>
         </SwiperSlide>
+
         <SwiperSlide>
           <div className="slider slider1 flex justify-center items-center z-0 bg-[linear-gradient(45deg,#FF6F6159,#9656A1B3),url('/img/slider2.jpg')] h-[700px] bg-cover bg-center ">
             <div className="text-center text-white space-y-8">
               <h2 className="md:text-5xl text-4xl font-bold text-white capitalize mx-auto w-4/5">
-                Porcelain Patterned Wall & Floor Tile
+                Resource Sharing Community
               </h2>
               <p className="lg:w-2/3 mx-auto w-4/5">
-                The field tile offers a modern twist to classic old-world
-                European elegance. In muted black and chalky white tones, this
-                unique patterned tile features a star constructed of geometric
-                shapes at its center
+                Join a vibrant community of learners dedicated to sharing
+                knowledge and resources. Access study materials, notes, and
+                insights contributed by group members, enriching your learning
+                journey.
               </p>
               <div className="space-x-4">
                 <button className="btn btn-lg border-[3px] font-bold bg-white hover:border-white text-[#FF6F61]  border-white hover:bg-transparent hover:text-white">
@@ -73,16 +73,18 @@ const Slider = () => {
             </div>
           </div>
         </SwiperSlide>
+
         <SwiperSlide>
           <div className="slider slider1 flex justify-center items-center z-0 bg-[linear-gradient(45deg,#FF6F6159,#9656A1B3),url('/img/slider3.jpg')] h-[700px] bg-cover bg-center ">
             <div className="text-center text-white space-y-8">
               <h2 className="md:text-5xl text-4xl font-bold text-white capitalize mx-auto w-4/5">
-                Keilson Ceramic Pot Planter
+                Virtual Study Rooms
               </h2>
               <p className="lg:w-2/3 mx-auto w-4/5">
-                The Keilson Ceramic Pot Planter is a stylish vessel for indoor
-                plants, crafted with durable ceramic material, enhancing any
-                home decor.
+                Immerse yourself in virtual study environments designed for
+                collaborative learning. Connect with peers in real-time, engage
+                in group discussions, and stay focused with dedicated study
+                spaces.
               </p>
               <div className="space-x-4">
                 <button className="btn btn-lg border-[3px] font-bold hover:bg-white hover:border-white hover:text-[#FF6F61]  border-white bg-transparent text-white">
@@ -92,17 +94,17 @@ const Slider = () => {
             </div>
           </div>
         </SwiperSlide>
+
         <SwiperSlide>
           <div className="slider slider1 flex justify-center items-center z-0 bg-[linear-gradient(45deg,#FF6F6159,#9656A1B3),url('/img/slider4.jpg')] h-[700px] bg-cover bg-center ">
             <div className="text-center text-white space-y-8">
               <h2 className="md:text-5xl text-4xl font-bold text-white capitalize mx-auto w-4/5">
-                Porcelain Patterned Wall & Floor Tile
+                Flexible Study Scheduling
               </h2>
               <p className="lg:w-2/3 mx-auto w-4/5">
-                The field tile offers a modern twist to classic old-world
-                European elegance. In muted black and chalky white tones, this
-                unique patterned tile features a star constructed of geometric
-                shapes at its center
+                Customize your study routine with flexible scheduling options.
+                Find study groups that align with your availability and academic
+                goals, ensuring a convenient and productive learning experience.
               </p>
               <div className="space-x-4">
                 <button className="btn btn-lg border-[3px] font-bold bg-white hover:border-white text-[#FF6F61]  border-white hover:bg-transparent hover:text-white">
