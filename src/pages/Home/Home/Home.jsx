@@ -8,6 +8,7 @@ import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Fade } from "react-awesome-reveal";
 
 const Home = () => {
   const { dataLoading, setDataLoading } = useAuth();
@@ -39,12 +40,16 @@ const Home = () => {
         <title>STUDY TOGETHER | Home</title>
       </Helmet>
       <div className="space-y-24">
-        <Slider></Slider>
+        <Fade duration={1500}>
+          <Slider></Slider>
+        </Fade>
 
         <div className="container lg:w-[1200px] mx-auto space-y-24">
           <FeatureSection assignments={assignments}></FeatureSection>
 
-          <FAQ></FAQ>
+          <Fade duration={1500}>
+            <FAQ></FAQ>
+          </Fade>
         </div>
       </div>
     </div>

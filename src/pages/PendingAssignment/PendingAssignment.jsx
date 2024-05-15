@@ -6,6 +6,9 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import { Fade } from "react-awesome-reveal";
+import Lottie from "lottie-react";
+import DataLoading from "../../../public/img/loading.json";
 
 const PendingAssignment = () => {
   const loaderData = useLoaderData();
@@ -13,12 +16,15 @@ const PendingAssignment = () => {
   const { user } = useAuth();
   const [pendingDatas, setPendingDatas] = useState([]);
   const [modifiedCount, setModifiedCount] = useState(0);
+  const [loadingPending, setLoadingPending] = useState(true);
 
   useEffect(() => {
     axios("https://online-study-server-iota.vercel.app/answers", {
       withCredentials: true,
     }).then((res) => {
+      setLoadingPending(true);
       setPendingDatas(res.data);
+      setLoadingPending(false);
     });
   }, [modifiedCount]);
 
@@ -27,7 +33,7 @@ const PendingAssignment = () => {
   );
 
   const handleGiveMark = (id) => {
-    const data = loaderData.data.find((data) => data._id === id);
+    const data = loaderData?.data?.find((data) => data._id === id);
 
     setModalData(data);
 
@@ -70,6 +76,13 @@ const PendingAssignment = () => {
       });
   };
 
+  if (loadingPending)
+    return (
+      <div className="flex justify-center items-center min-h-[60vh] ">
+        <Lottie className="w-32 " animationData={DataLoading} loop={true} />
+      </div>
+    );
+
   return (
     <div>
       <Helmet>
@@ -77,6 +90,7 @@ const PendingAssignment = () => {
       </Helmet>
 
       {/* modal give mark */}
+
       <dialog id="my_modal_2" className="At nulla temporibus modal">
         <div className="At nulla temporibus modal-box">
           <div className="text-center">
@@ -158,54 +172,56 @@ const PendingAssignment = () => {
         </form>
       </dialog>
 
-      <section className="container px-4 mx-auto pt-12 space-y-6">
-        <div className="flex items-center gap-x-3">
-          <h2 className="text-lg font-medium  ">My Submitted Assignments</h2>
+      <Fade duration={1500}>
+        <section className="container px-4 mx-auto pt-12 space-y-6">
+          <div className="flex items-center gap-x-3">
+            <h2 className="text-lg font-medium  ">My Submitted Assignments</h2>
 
-          <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
-            0{newPendingData.length} Assignments
-          </span>
-        </div>
+            <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
+              0{newPendingData.length} Assignments
+            </span>
+          </div>
 
-        <div className="overflow-x-auto">
-          <table className="At nulla temporibus table At nulla temporibus table-zebra border border-base-200">
-            {/* head */}
-            <thead className="text-[15px]">
-              <tr>
-                <th></th>
-                <th>Title</th>
-                <th>Examinee Name </th>
-                <th>Marks</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-
-              {newPendingData.map((data, index) => (
-                <tr key={data._id}>
-                  <th>{index + 1}</th>
-                  <td>{data.assignmentTitle}</td>
-                  <td>{data.examineeInfo.name}</td>
-                  <td>{data.marks}</td>
-                  <td>
-                    <button
-                      disabled={data.examineeInfo.email === user.email}
-                      onClick={() => [
-                        document.getElementById("my_modal_2").showModal(),
-                        handleGiveMark(data._id),
-                      ]}
-                      className="btn btn-sm btn-success text-white disabled:cursor-not-allowed"
-                    >
-                      Give Mark
-                    </button>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="At nulla temporibus table At nulla temporibus table-zebra border border-base-200">
+              {/* head */}
+              <thead className="text-[15px]">
+                <tr>
+                  <th></th>
+                  <th>Title</th>
+                  <th>Examinee Name </th>
+                  <th>Marks</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+              </thead>
+              <tbody>
+                {/* row 1 */}
+
+                {newPendingData.map((data, index) => (
+                  <tr key={data._id}>
+                    <th>{index + 1}</th>
+                    <td>{data.assignmentTitle}</td>
+                    <td>{data.examineeInfo.name}</td>
+                    <td>{data.marks}</td>
+                    <td>
+                      <button
+                        disabled={data.examineeInfo.email === user.email}
+                        onClick={() => [
+                          document.getElementById("my_modal_2").showModal(),
+                          handleGiveMark(data._id),
+                        ]}
+                        className="btn btn-sm btn-success text-white disabled:cursor-not-allowed"
+                      >
+                        Give Mark
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </Fade>
     </div>
   );
 };
