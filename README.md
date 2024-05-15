@@ -35,6 +35,8 @@
 
 - <strong>Firebase Authentication: </strong> Ensure that your website is optimized for various devices, including smartphones and tablets, to accommodate users who prefer to browse and search for rental properties on the go.
 
+- <strong>React Awesome Reveal: </strong> React Awesome Reveal is a library for React apps that provides a set of curated animated primitives. They can be used to add revealing animations to your components when they enter the browser viewport as the user scrolls the page.
+
 ### npm packages that is installed on this Project
 
 - [Axios](https://axios-http.com/)
@@ -45,3 +47,4 @@
 - [React Icon](https://react-icons.github.io/react-icons/)
 - [Swiper slider](https://swiperjs.com/)
 - [React-Sweetalert2](https://sweetalert2.github.io/)
+- [React Awesome Reveal](https://react-awesome-reveal.morello.dev/)
