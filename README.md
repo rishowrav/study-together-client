@@ -14,9 +14,9 @@
 
 ### Live Site Link: https://pharmeasy-client.web.app/
 
-### Client Side Link: https://github.com/rishowrav/pharmeasy-client
+### Client Side Link: https://github.com/rishowrav/study-together-client
 
-### Server Side Link: https://github.com/rishowrav/pharmeasy-server
+### Server Side Link: https://github.com/rishowrav/study-together-server
 
 <hr>
 
