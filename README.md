@@ -7,15 +7,18 @@
 
   <h3 align="center">Website Name:- <a href="https://online-study-client.web.app/">Study Together</a></h3>
   <p>Live link: https://online-study-client.web.app/</p>
-  
-### Assignment_ID: assignment_category_0001
 
 <strong align="center">Explore the docs »</strong>
-<br/>
-<br/>
-<br/>
 
 </div>
+
+### Live Site Link: https://pharmeasy-client.web.app/
+
+### Client Side Link: https://github.com/rishowrav/pharmeasy-client
+
+### Server Side Link: https://github.com/rishowrav/pharmeasy-server
+
+<hr>
 
 ### Features of Website
 
