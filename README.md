@@ -12,7 +12,7 @@
 
 </div>
 
-### Live Site Link: https://pharmeasy-client.web.app/
+### Live Site Link: https://online-study-client.web.app/
 
 ### Client Side Link: https://github.com/rishowrav/study-together-client
 
